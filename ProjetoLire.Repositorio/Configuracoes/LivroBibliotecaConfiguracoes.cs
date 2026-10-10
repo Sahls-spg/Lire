@@ -13,7 +13,7 @@ namespace ProjetoLire.Repositorio.Configuracoes
             builder.Property(biblioteca => biblioteca.Id).HasColumnName("Id").IsRequired(true);
             builder.Property(biblioteca => biblioteca.UsuarioId).HasColumnName("UsuarioId").IsRequired(true);
             builder.Property(biblioteca => biblioteca.LivroId).HasColumnName("LivroId").IsRequired(true);
-            builder.Property(biblioteca => biblioteca.StatusLeitura).HasColumnName("StatusLeitura").IsRequired(false);
+            builder.Property(biblioteca => biblioteca.StatusLeitura).HasColumnName("StatusLeitura").IsRequired(true);
             builder.Property(biblioteca => biblioteca.DataAdicionado).HasColumnName("DataAdicionado").IsRequired(true);
 
             builder
