@@ -6,9 +6,9 @@ using ProjetoLire.Repositorio.Interfaces;
 
 namespace ProjetoLire.Repositorio
 {
-    public class BibliotecaRepositorio : BaseRepositorio, ILivroBibliotecaRepositorio
+    public class LivroBibliotecaRepositorio : BaseRepositorio, ILivroBibliotecaRepositorio
     {
-        public BibliotecaRepositorio(ProjetoLireContexto contexto) : base(contexto)
+        public LivroBibliotecaRepositorio(ProjetoLireContexto contexto) : base(contexto)
         {
 
         }

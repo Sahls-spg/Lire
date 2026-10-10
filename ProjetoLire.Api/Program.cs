@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using ProjetoLire.Repositorio;
 using ProjetoLire.Repositorio.Contexto;
+using ProjetoLire.Repositorio.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ProjetoLireContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Lire")));
+
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
+builder.Services.AddScoped<ILeituraRepositorio, LeituraRepositorio>();
+builder.Services.AddScoped<IPlanoLeituraRepositorio, PlanoLeituraRepositorio>();
+builder.Services.AddScoped<ILivroBibliotecaRepositorio, LivroBibliotecaRepositorio>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
