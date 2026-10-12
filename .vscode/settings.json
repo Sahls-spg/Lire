@@ -1,0 +1,4 @@
+{
+    "discord.enabled": true,
+    "dotnet.defaultSolution": "ProjetoLire.slnx"
+}

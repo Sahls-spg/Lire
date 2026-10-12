@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoLire.Dominio\ProjetoLire.Dominio.csproj" />
+    <ProjectReference Include="..\ProjetoLire.Repositorio\ProjetoLire.Repositorio.csproj" />
+    <ProjectReference Include="..\ProjetoLire.Servicos\ProjetoLire.Services.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+</Project>
