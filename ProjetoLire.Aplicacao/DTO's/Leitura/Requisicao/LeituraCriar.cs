@@ -1,6 +1,6 @@
 namespace ProjetoLire.Aplicacao.DTO
 {
-    public class LeituraDTO
+    public class LeituraCriar
     {
         public int UsuarioId { get; set; }
         public int LivroId { get; set; }

@@ -12,5 +12,22 @@ namespace ProjetoLire.Dominio.Entidades
         public int DiasDisponiveisParaLer { get; set; }
         public int PaginasPorDia { get; set; }
         public DateOnly DataPrevisaoTermino { get; set; }
+
+
+        public PlanoLeitura()
+        {
+            TimeSpan tempoDiario = TempoDiarioPraLer.ToTimeSpan();
+
+            TimeSpan paginasPorDia = tempoDiario / 5; // 6 pag
+
+            var paginasSemana = DiasDisponiveisParaLer * paginasPorDia; // 
+
+            var paginasPorSemana = (int)paginasSemana.TotalDays;
+
+            var quantidadeSemanasLeitura = Livro.QuantidadeDePaginas / paginasPorSemana;
+
+            DataPrevisaoTermino = DateOnly.FromDateTime(DateTime.Now.Date).AddDays(quantidadeSemanasLeitura * 7);
+        }
     }
+
 }

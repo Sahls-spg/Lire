@@ -9,5 +9,10 @@ namespace ProjetoLire.Dominio.Entidades
         public Livro Livro { get; set; }
         public int PaginaAtual { get; set; }
         public DateOnly DataRegistro { get; set; }
+
+        public Leitura()
+        {
+            DataRegistro = DateOnly.FromDateTime(DateTime.Now.Date);
+        }
     }
 }
