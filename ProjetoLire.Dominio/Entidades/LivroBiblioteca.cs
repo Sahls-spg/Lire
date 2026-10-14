@@ -11,5 +11,10 @@ namespace ProjetoLire.Dominio.Entidades
         public int LivroId { get; set; }
         public StatusLeitura StatusLeitura { get; set; }
         public DateOnly DataAdicionado { get; set; }
+
+        public LivroBiblioteca()
+        {
+           DataAdicionado =  DateOnly.FromDateTime(DateTime.Now.Date);
+        }
     }
 }

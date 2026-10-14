@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KEXY+cJ0pz4=",
+  "dgSpecHash": "CwjHyDLiv5A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Noite\\Desktop\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
+  "projectFilePath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Noite\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Noite\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
