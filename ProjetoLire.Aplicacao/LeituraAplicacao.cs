@@ -1,9 +1,10 @@
+using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Interfaces;
 
 namespace ProjetoLire.Aplicacao
 {
-    public class LeituraAplicacao
+    public class LeituraAplicacao : ILeituraAplicacao
     {
         readonly ILeituraRepositorio _leituraRepositorio;
 
@@ -81,9 +82,8 @@ namespace ProjetoLire.Aplicacao
 
             if(leitura.PaginaAtual <= 0)
             {
-                throw new Exception("A página atual não pode ser negativa.");
+                throw new Exception("A página atual do livro não pode ser negativa.");
             }
         }
-
     }
 }

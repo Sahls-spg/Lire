@@ -5,7 +5,7 @@ namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface ILivroBibliotecaAplicacao
     {
-        public Task<List<Livro>> ListarPorUsuarioAsync(int usuarioId);
-        public Task<List<Livro>> ListarPorStatusAsync(int usuarioId, StatusLeitura statusLeitura);
+        public Task<List<LivroBiblioteca>> ListarPorUsuarioAsync(int usuarioId);
+        public Task<List<LivroBiblioteca>> ListarPorStatusAsync(int usuarioId, StatusLeitura statusLeitura);
     }
 }

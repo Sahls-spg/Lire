@@ -1,9 +1,10 @@
+using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Interfaces;
 
 namespace ProjetoLire.Aplicacao
 {
-    public class UsuarioAplicacao
+    public class UsuarioAplicacao : IUsuarioAplicacao
     {
         readonly IUsuarioRepositorio _usuarioRepositorio;
 

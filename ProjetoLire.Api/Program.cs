@@ -1,14 +1,19 @@
 using Microsoft.EntityFrameworkCore;
+using ProjetoLire.Aplicacao;
+using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Repositorio;
 using ProjetoLire.Repositorio.Contexto;
 using ProjetoLire.Repositorio.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
-
 builder.Services.AddDbContext<ProjetoLireContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Lire")));
+
+builder.Services.AddScoped<IUsuarioAplicacao, UsuarioAplicacao>();
+builder.Services.AddScoped<ILivroAplicacao, LivroAplicacao>();
+builder.Services.AddScoped<ILeituraAplicacao, LeituraAplicacao>();
+builder.Services.AddScoped<IPlanoLeituraAplicacao, PlanoLeituraAplicacao>();
+builder.Services.AddScoped<ILivroBibliotecaAplicacao, LivroBibliotecaAplicacao>();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();

@@ -6,7 +6,7 @@ namespace ProjetoLire.Aplicacao.Interfaces
     {
         public Task<int> RegistrarAsync(Leitura leitura);
         public Task AtualizarAsync(Leitura leitura);
-        public Task<Leitura> ListarAsync();
-        public Task<Leitura> ListarPorUsuarioAsync(int usuarioId);
+        public Task<List<Leitura>> ListarAsync();
+        public Task<List<Leitura>> ListarPorUsuarioAsync(int usuarioId);
     }
 }

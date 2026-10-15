@@ -1,10 +1,11 @@
+using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Dominio.Enumeradores;
 using ProjetoLire.Repositorio.Interfaces;
 
 namespace ProjetoLire.Aplicacao
 {
-    public class LivroBibliotecaAplicacao
+    public class LivroBibliotecaAplicacao : ILivroBibliotecaAplicacao
     {
         readonly ILivroBibliotecaRepositorio _bibliotecaRepositorio;
 
