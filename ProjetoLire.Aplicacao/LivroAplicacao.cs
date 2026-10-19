@@ -48,9 +48,9 @@ namespace ProjetoLire.Aplicacao
             _livroRepositorio.Atualizar(livro);
         }
 
-        public async Task DeletarAsync(Livro livro)
+        public async Task DeletarAsync(int livroId)
         {
-            var livroDeletar = _livroRepositorio.ObterPeloId(livro.Id);
+            var livroDeletar = _livroRepositorio.ObterPeloId(livroId);
 
             if(livroDeletar == null)
             {

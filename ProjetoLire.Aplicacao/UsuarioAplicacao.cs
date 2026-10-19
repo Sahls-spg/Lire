@@ -46,10 +46,10 @@ namespace ProjetoLire.Aplicacao
             _usuarioRepositorio.Atualizar(usuarioDominio);
         }
 
-        public async Task DeletarAsync(Usuario usuario)
+        public async Task DeletarAsync(int usuarioId)
         {
 
-            var usuarioDeletar = _usuarioRepositorio.ObterPeloId(usuario.Id);
+            var usuarioDeletar = _usuarioRepositorio.ObterPeloId(usuarioId);
 
             if(usuarioDeletar == null)
             {
