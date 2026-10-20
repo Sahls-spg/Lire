@@ -8,6 +8,7 @@ namespace ProjetoLire.Repositorio.Interfaces
         public void Atualizar(Usuario usuario);
         public void Deletar(Usuario usuario);
         public Usuario ObterPeloId(int usuarioId);
+        public Usuario ObterPeloEmail(string email);
         public List<Usuario> Listar();
     }
 }
