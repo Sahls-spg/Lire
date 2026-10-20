@@ -8,6 +8,7 @@ namespace ProjetoLire.Aplicacao.Interfaces
         public Task AtualizarAsync(Usuario usuario);
         public Task DeletarAsync(int usuarioId);
         public Task<Usuario> ObterPeloIdAsync(int usuarioId);
+        public Task<Usuario> ObterPeloEmail(string email);
         public Task<List<Usuario>> ListarAsync();
     }
 }

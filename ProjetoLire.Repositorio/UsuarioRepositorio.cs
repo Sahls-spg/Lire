@@ -35,6 +35,10 @@ namespace ProjetoLire.Repositorio
         {
             return _contexto.Usuarios.Where(usuario => usuario.Id == usuarioId).FirstOrDefault();
         }
+        public Usuario ObterPeloEmail(string email)
+        {
+            return _contexto.Usuarios.Where(usuario => usuario.Email == email).FirstOrDefault();
+        }
         public List<Usuario> Listar()
         {
             return _contexto.Usuarios.ToList();

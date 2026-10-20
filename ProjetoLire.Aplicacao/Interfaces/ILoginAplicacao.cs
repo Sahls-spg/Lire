@@ -4,6 +4,6 @@ namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface ILoginAplicacao
     {
-        Task<LoginResposta> LoginAsync(LoginRequisicao requisicao);
+        public Task<LoginResposta> LoginAsync(LoginRequisicao requisicao);
     }
 }

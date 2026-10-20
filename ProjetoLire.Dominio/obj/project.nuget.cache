@@ -8,5 +8,15 @@
     "C:\\Users\\Noite\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.31\\microsoft.windowsdesktop.app.ref.8.0.31.nupkg.sha512",
     "C:\\Users\\Noite\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.31\\microsoft.aspnetcore.app.ref.8.0.31.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\obj\\project.nuget.cache: '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

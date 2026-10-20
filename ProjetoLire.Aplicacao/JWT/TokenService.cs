@@ -41,5 +41,10 @@ namespace ProjetoLire.Aplicacao.JWT
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        internal string GerarToken(int id, object senha)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

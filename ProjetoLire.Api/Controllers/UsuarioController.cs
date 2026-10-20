@@ -81,12 +81,39 @@ namespace ProjetoLire.API.Controllers
         }
 
         [HttpGet]
-        [Route("Obter/{usuarioId}")]
-        public async Task<ActionResult> Obter([FromRoute] int usuarioId)
+        [Route("ObterPeloId/{usuarioId}")]
+        public async Task<ActionResult> ObterPeloId([FromRoute] int usuarioId)
         {
             try
             {
                 var usuarioDominio = await _usuarioAplicacao.ObterPeloIdAsync(usuarioId);
+
+                var usuario = new UsuarioResposta()
+                {
+                    Id = usuarioDominio.Id,
+                    Nome = usuarioDominio.Nome,
+                    Sobrenome = usuarioDominio.Sobrenome,
+                    DataNascimento = usuarioDominio.DataNascimento,
+                    Email = usuarioDominio.Email,
+                    Genero = usuarioDominio.Genero,
+                    DataCriacaoDaConta = usuarioDominio.DataCriacaoDaConta,
+                    GenerosLiterariosFavorito = usuarioDominio.GenerosLiterariosFavorito
+                };
+                return Ok(usuario);
+            }
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("ObterPeloEmail/{email}")]
+        public async Task<ActionResult> ObterPeloEmail([FromRoute] string email)
+        {
+            try
+            {
+                var usuarioDominio = await _usuarioAplicacao.ObterPeloEmail(email);
 
                 var usuario = new UsuarioResposta()
                 {

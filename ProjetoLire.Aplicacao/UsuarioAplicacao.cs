@@ -71,6 +71,18 @@ namespace ProjetoLire.Aplicacao
             return usuarioDominio;
         }
 
+        public async Task<Usuario> ObterPeloEmail(string email)
+        {
+            var usuarioDominio = _usuarioRepositorio.ObterPeloEmail(email);
+
+            if(usuarioDominio == null)
+            {
+                throw new Exception("Usuário não encontrado.");
+            }
+
+            return usuarioDominio;
+        }
+
         public async Task<List<Usuario>> ListarAsync()
         {
             var listaUsuarios = _usuarioRepositorio.Listar();
