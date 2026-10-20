@@ -56,7 +56,7 @@ namespace ProjetoLire.Repositorio.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     LivroId = table.Column<int>(type: "int", nullable: false),
-                    Leitura = table.Column<int>(type: "int", nullable: false),
+                    PaginaAtual = table.Column<int>(type: "int", nullable: false),
                     DataRegistro = table.Column<DateOnly>(type: "date", nullable: false)
                 },
                 constraints: table =>

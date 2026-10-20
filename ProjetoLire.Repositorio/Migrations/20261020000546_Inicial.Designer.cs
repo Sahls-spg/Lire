@@ -12,8 +12,8 @@ using ProjetoLire.Repositorio.Contexto;
 namespace ProjetoLire.Repositorio.Migrations
 {
     [DbContext(typeof(ProjetoLireContexto))]
-    [Migration("20261012151508_Correcao")]
-    partial class Correcao
+    [Migration("20261020000546_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
       "projectName": "ProjetoLire.Dominio",
-      "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+      "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
       "packagesPath": "C:\\Users\\Noite\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\obj\\",
+      "outputPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj": {}
+    "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj": {
+    "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
+        "projectUniqueName": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
         "projectName": "ProjetoLire.Aplicacao",
-        "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
+        "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
         "packagesPath": "C:\\Users\\Noite\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\obj\\",
+        "outputPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
-                "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
+              "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
               },
-              "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
-                "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj"
+              "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
+                "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj"
               }
             }
           }
@@ -94,14 +94,14 @@
         }
       }
     },
-    "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
+    "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
         "projectName": "ProjetoLire.Dominio",
-        "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+        "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
         "packagesPath": "C:\\Users\\Noite\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\obj\\",
+        "outputPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -171,14 +171,14 @@
         }
       }
     },
-    "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
+    "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj",
+        "projectUniqueName": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj",
         "projectName": "ProjetoLire.Repositorio",
-        "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj",
+        "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj",
         "packagesPath": "C:\\Users\\Noite\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\obj\\",
+        "outputPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -196,8 +196,8 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
-                "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
+              "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
+                "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
               }
             }
           }

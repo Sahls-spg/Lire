@@ -2433,11 +2433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
+      "projectUniqueName": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
       "projectName": "ProjetoLire.Aplicacao",
-      "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
+      "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\ProjetoLire.Aplicacao.csproj",
       "packagesPath": "C:\\Users\\Noite\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Aplicacao\\obj\\",
+      "outputPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Aplicacao\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Noite\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2455,11 +2455,11 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
+            "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj"
             },
-            "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
-              "projectPath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj"
+            "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj": {
+              "projectPath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Repositorio\\ProjetoLire.Repositorio.csproj"
             }
           }
         }

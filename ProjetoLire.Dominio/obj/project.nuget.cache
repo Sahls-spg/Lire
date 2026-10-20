@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e05fgK7tr0c=",
+  "dgSpecHash": "N8x6E5cQiA0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Noite\\Downloads\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
+  "projectFilePath": "C:\\Users\\Noite\\Desktop\\Alunos-Noite\\Sara\\Lire-API\\ProjetoLire.Dominio\\ProjetoLire.Dominio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Noite\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.31\\microsoft.netcore.app.ref.8.0.31.nupkg.sha512",
     "C:\\Users\\Noite\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.31\\microsoft.windowsdesktop.app.ref.8.0.31.nupkg.sha512",
