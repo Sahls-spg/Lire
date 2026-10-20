@@ -9,6 +9,5 @@ namespace ProjetoLire.Aplicacao.DTO
         public GeneroLiterario GeneroLiterario { get; set; }
         public int QuantidadeDePaginas { get; set; }
         public string Sinopse { get; set; }
-        
     }
 }
