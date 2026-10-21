@@ -24,6 +24,7 @@ builder.Services.AddScoped<ILivroAplicacao, LivroAplicacao>();
 builder.Services.AddScoped<ILeituraAplicacao, LeituraAplicacao>();
 builder.Services.AddScoped<IPlanoLeituraAplicacao, PlanoLeituraAplicacao>();
 builder.Services.AddScoped<ILivroBibliotecaAplicacao, LivroBibliotecaAplicacao>();
+builder.Services.AddScoped<ILoginAplicacao, LoginAplicacao>();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
