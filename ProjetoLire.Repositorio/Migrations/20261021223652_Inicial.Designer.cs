@@ -12,7 +12,7 @@ using ProjetoLire.Repositorio.Contexto;
 namespace ProjetoLire.Repositorio.Migrations
 {
     [DbContext(typeof(ProjetoLireContexto))]
-    [Migration("20261020000546_Inicial")]
+    [Migration("20261021223652_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />

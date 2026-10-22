@@ -11,11 +11,27 @@ using ProjetoLire.Repositorio.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+var jwtSettings = builder.Configuration.GetSection(JwtSettings.Secao).Get<JwtSettings>();
 
 builder.Services.AddSingleton(jwtSettings);
-
 builder.Services.AddScoped<TokenService>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = jwtSettings.Emissor,
+            ValidateAudience = true,
+            ValidAudience = jwtSettings.Audiencia,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Chave)),
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddDbContext<ProjetoLireContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Lire")));
 
@@ -36,23 +52,6 @@ builder.Services.AddScoped<ILivroBibliotecaRepositorio, LivroBibliotecaRepositor
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidIssuer = jwtSettings.Emissor,
-            ValidAudience = jwtSettings.Audiencia,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtSettings.Chave)
-            ),
-            ValidateLifetime = true
-        };
-    });
-
-builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

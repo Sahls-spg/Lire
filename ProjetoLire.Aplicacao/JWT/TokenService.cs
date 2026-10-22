@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.Aplicacao.JWT
 {
@@ -14,37 +15,28 @@ namespace ProjetoLire.Aplicacao.JWT
             _settings = settings;
         }
 
-        public string GerarToken(int usuarioId, string email)
+        public string GerarToken(Usuario usuario)
         {
-
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, usuarioId.ToString()),
-
-                new Claim(ClaimTypes.Email, email)
-            };
-
             var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Chave));
 
             var credenciais = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken 
+            var claims = new List<Claim>
+            {
+                new(JwtRegisteredClaimNames.Sub, usuario.Id.ToString()),
+                new(JwtRegisteredClaimNames.Email, usuario.Email),
+            };
+
+            var token = new JwtSecurityToken
             (
                 issuer: _settings.Emissor,
-
                 audience: _settings.Audiencia,
-
                 claims: claims,
-
-                expires: DateTime.UtcNow.AddMinutes(_settings.ExpiracaoToken), signingCredentials: credenciais
+                expires: DateTime.UtcNow.AddMinutes(_settings.ExpiracaoToken),
+                signingCredentials: credenciais
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        internal string GerarToken(int id, object senha)
-        {
-            throw new NotImplementedException();
         }
     }
 }

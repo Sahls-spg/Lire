@@ -35,7 +35,7 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("Senha inválida, verifique se a senha informada está correta");
             }
 
-            var tokenGerado = _tokenservice.GerarToken(usuario.Id, usuario.Senha);
+            var tokenGerado = _tokenservice.GerarToken(usuario);
 
             var token = new LoginResposta()
             {
