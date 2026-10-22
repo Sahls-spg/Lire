@@ -11,7 +11,8 @@ using ProjetoLire.Repositorio.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var jwtSettings = builder.Configuration.GetSection(JwtSettings.Secao).Get<JwtSettings>();
+var jwtSettings = builder.Configuration.GetSection(JwtSettings.Secao).Get<JwtSettings>()
+    ?? throw new InvalidOperationException("A configuração JwtSettings não foi encontrada.");
 
 builder.Services.AddSingleton(jwtSettings);
 builder.Services.AddScoped<TokenService>();

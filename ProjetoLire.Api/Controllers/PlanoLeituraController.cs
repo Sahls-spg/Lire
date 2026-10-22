@@ -36,7 +36,7 @@ namespace ProjetoLire.API.Controllers
                     DataPrevisaoTermino = planoLeitura.DataPrevisaoTermino
                 };
 
-                var planoLeituraId = _planoLeituraAplicacao.CriarAsync(planoLeituraDominio);
+                var planoLeituraId = await _planoLeituraAplicacao.CriarAsync(planoLeituraDominio);
                 return Ok(planoLeituraId);
             }
             catch (Exception excecao)

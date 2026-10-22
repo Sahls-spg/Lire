@@ -33,7 +33,7 @@ namespace ProjetoLire.API.Controllers
                     Sinopse = livro.Sinopse
                 };
 
-                var livroId = _livroAplicacao.CadastrarAsync(livroDominio);
+                var livroId = await _livroAplicacao.CadastrarAsync(livroDominio);
                 return Ok(livroId);
             }
             catch (Exception excecao)

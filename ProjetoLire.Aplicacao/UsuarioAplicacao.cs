@@ -22,6 +22,11 @@ namespace ProjetoLire.Aplicacao
 
             ValidarInformacoesUsuario(usuario);
 
+            if(string.IsNullOrEmpty(usuario.Senha))
+            {
+                throw new Exception("A senha não pode ser vazia.");
+            }
+
             return _usuarioRepositorio.Criar(usuario);
         }
 
@@ -110,11 +115,6 @@ namespace ProjetoLire.Aplicacao
             if(string.IsNullOrEmpty(usuario.Email))
             {
                 throw new Exception("O e-mail não pode ser vazio.");
-            }
-
-            if(string.IsNullOrEmpty(usuario.Senha))
-            {
-                throw new Exception("A senha não pode ser vazia.");
             }
         }
     }

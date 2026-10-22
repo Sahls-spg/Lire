@@ -33,7 +33,7 @@ namespace ProjetoLire.API.Controllers
                     Senha = usuario.Senha
                 };
 
-                var usuarioId = _usuarioAplicacao.CriarAsync(usuarioDominio);
+                var usuarioId = await _usuarioAplicacao.CriarAsync(usuarioDominio);
                 return Ok(usuarioId);
             }
             catch (Exception excecao)
@@ -50,6 +50,7 @@ namespace ProjetoLire.API.Controllers
             {
                 var usuarioDominio = new Usuario()
                 {
+                    Id = usuario.Id,
                     Nome = usuario.Nome,
                     Sobrenome = usuario.Sobrenome,
                     DataNascimento = usuario.DataNascimento,

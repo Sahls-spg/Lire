@@ -33,7 +33,7 @@ namespace ProjetoLire.API.Controllers
                     DataRegistro = leitura.DataRegistro
                 };
 
-                var leituraId = _leituraAplicacao.RegistrarAsync(leituraDominio);
+                var leituraId = await _leituraAplicacao.RegistrarAsync(leituraDominio);
                 return Ok(leituraId);
             }
             catch (Exception excecao)
