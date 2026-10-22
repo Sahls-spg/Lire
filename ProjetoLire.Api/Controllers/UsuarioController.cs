@@ -30,7 +30,8 @@ namespace ProjetoLire.API.Controllers
                     Sobrenome = usuario.Sobrenome,
                     DataNascimento = usuario.DataNascimento,
                     Email = usuario.Email,
-                    Senha = usuario.Senha
+                    Senha = usuario.Senha,
+                    Genero = usuario.Genero
                 };
 
                 var usuarioId = await _usuarioAplicacao.CriarAsync(usuarioDominio);
