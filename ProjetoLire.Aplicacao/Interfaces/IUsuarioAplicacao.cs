@@ -1,14 +1,15 @@
+using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface IUsuarioAplicacao
     {
-        public Task<int> CriarAsync(Usuario usuario);
-        public Task AtualizarAsync(Usuario usuario);
+        public Task<int> CriarAsync(UsuarioCriar usuario);
+        public Task AtualizarAsync(UsuarioAtualizar usuario);
         public Task DeletarAsync(int usuarioId);
-        public Task<Usuario> ObterPeloIdAsync(int usuarioId);
-        public Task<Usuario> ObterPeloEmail(string email);
-        public Task<List<Usuario>> ListarAsync();
+        public Task<UsuarioResposta> ObterPeloIdAsync(int usuarioId);
+        public Task<Usuario> ObterPeloEmailAsync(string email);
+        public Task<List<UsuarioResposta>> ListarAsync();
     }
 }

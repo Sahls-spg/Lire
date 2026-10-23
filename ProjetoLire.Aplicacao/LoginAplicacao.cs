@@ -23,7 +23,7 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("É necessário informar o e-mail e a senha");
             }
 
-            var usuario = await _usuarioAplicacao.ObterPeloEmail(loginRequisicao.Email);
+            var usuario = await _usuarioAplicacao.ObterPeloEmailAsync(loginRequisicao.Email);
 
             if(usuario == null)
             {

@@ -1,3 +1,4 @@
+using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Interfaces;
@@ -13,31 +14,40 @@ namespace ProjetoLire.Aplicacao
             _livroRepositorio = livroRepositorio;
         }
 
-        public async Task<int> CadastrarAsync(Livro livro)
+        public async Task<int> CadastrarAsync(LivroCriar livro)
         {
-            
-            if(livro == null)
+
+            if (livro == null)
             {
                 throw new Exception("O livro não pode ser vazio.");
             }
 
-            ValidarInformacoesLivro(livro);
+            ValidarInformacoesLivro(livro.Titulo, livro.Autor, livro.QuantidadeDePaginas);
 
-            _livroRepositorio.Cadastrar(livro);
+            var livroDominio = new Livro
+            {
+                Titulo = livro.Titulo,
+                Autor = livro.Autor,
+                GeneroLiterario = livro.GeneroLiterario,
+                QuantidadeDePaginas = livro.QuantidadeDePaginas,
+                Sinopse = livro.Sinopse
+            };
 
-            return livro.Id;
+            var livroId = _livroRepositorio.Cadastrar(livroDominio);
+
+            return livroId;
         }
 
-        public async Task AtualizarAsync(Livro livro)
+        public async Task AtualizarAsync(LivroAtualizar livro)
         {
-            var livroDominio =_livroRepositorio.ObterPeloId(livro.Id);
+            var livroDominio = _livroRepositorio.ObterPeloId(livro.Id);
 
-            if(livroDominio == null)
+            if (livroDominio == null)
             {
                 throw new Exception("Livro não encontrado.");
             }
 
-            ValidarInformacoesLivro(livro);
+            ValidarInformacoesLivro(livro.Titulo, livro.Autor, livro.QuantidadeDePaginas);
 
             livroDominio.Titulo = livro.Titulo;
             livroDominio.Autor = livro.Autor;
@@ -45,14 +55,14 @@ namespace ProjetoLire.Aplicacao
             livroDominio.QuantidadeDePaginas = livro.QuantidadeDePaginas;
             livroDominio.GeneroLiterario = livro.GeneroLiterario;
 
-            _livroRepositorio.Atualizar(livro);
+            _livroRepositorio.Atualizar(livroDominio);
         }
 
         public async Task DeletarAsync(int livroId)
         {
             var livroDeletar = _livroRepositorio.ObterPeloId(livroId);
 
-            if(livroDeletar == null)
+            if (livroDeletar == null)
             {
                 throw new Exception("Livro não encontrado.");
             }
@@ -60,43 +70,64 @@ namespace ProjetoLire.Aplicacao
             _livroRepositorio.Deletar(livroDeletar);
         }
 
-        public async Task<Livro> ObterPeloIdAsync(int livroId)
+        public async Task<LivroResposta> ObterPeloIdAsync(int livroId)
         {
             var livroDominio = _livroRepositorio.ObterPeloId(livroId);
 
-            if(livroDominio == null)
+            if (livroDominio == null)
             {
-                throw new Exception("Livro não encontrado."); 
+                throw new Exception("Livro não encontrado.");
             }
-            
-            return livroDominio;
+
+            var livro = new LivroResposta()
+            {
+                Id = livroDominio.Id,
+                Titulo = livroDominio.Titulo,
+                Autor = livroDominio.Autor,
+                Sinopse = livroDominio.Sinopse,
+                QuantidadeDePaginas = livroDominio.QuantidadeDePaginas,
+                GeneroLiterario = livroDominio.GeneroLiterario
+            };
+
+            return livro;
         }
 
-        public async Task<List<Livro>> ListarAsync()
+        public async Task<List<LivroResposta>> ListarAsync()
         {
-            var listaLivros = _livroRepositorio.Listar();
+            var livrosDominio = _livroRepositorio.Listar();
 
-            if(listaLivros == null)
+            if (livrosDominio == null)
             {
-                throw new Exception("Não há livros para listar."); 
+                throw new Exception("Não há livros para listar.");
             }
+
+            var listaLivros = livrosDominio.Select(livro => new LivroResposta
+            {
+                Id = livro.Id,
+                Titulo = livro.Titulo,
+                Autor = livro.Autor,
+                Sinopse = livro.Sinopse,
+                QuantidadeDePaginas = livro.QuantidadeDePaginas,
+                GeneroLiterario = livro.GeneroLiterario
+            }).ToList();
+
 
             return listaLivros;
         }
 
-        private static void ValidarInformacoesLivro(Livro livro)
+        private static void ValidarInformacoesLivro(string titulo, string autor, int quantidadeDePaginas)
         {
-            if(string.IsNullOrEmpty(livro.Titulo))
+            if (string.IsNullOrEmpty(titulo))
             {
                 throw new Exception("O título do livro não pode ser vazio.");
             }
 
-            if(string.IsNullOrEmpty(livro.Autor))
+            if (string.IsNullOrEmpty(autor))
             {
                 throw new Exception("O nome do(a) autor(a) não pode ser vazio.");
             }
 
-            if(livro.QuantidadeDePaginas <= 0)
+            if (quantidadeDePaginas <= 0)
             {
                 throw new Exception("A quantidade de páginas do livro não pode ser negativa.");
             }

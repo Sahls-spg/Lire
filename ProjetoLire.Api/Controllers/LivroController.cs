@@ -24,16 +24,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var livroDominio = new Livro()
-                {
-                    Titulo = livro.Titulo,
-                    Autor = livro.Autor,
-                    GeneroLiterario = livro.GeneroLiterario,
-                    QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                    Sinopse = livro.Sinopse
-                };
-
-                var livroId = await _livroAplicacao.CadastrarAsync(livroDominio);
+                var livroId = await _livroAplicacao.CadastrarAsync(livro);
                 return Ok(livroId);
             }
             catch (Exception excecao)
@@ -48,16 +39,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var livroDominio = new Livro()
-                {
-                    Titulo = livro.Titulo,
-                    Autor = livro.Autor,
-                    GeneroLiterario = livro.GeneroLiterario,
-                    QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                    Sinopse = livro.Sinopse
-                };
-
-                await _livroAplicacao.AtualizarAsync(livroDominio);
+                await _livroAplicacao.AtualizarAsync(livro);
                 return Ok();
             }
             catch (Exception excecao)
@@ -82,23 +64,13 @@ namespace ProjetoLire.API.Controllers
         }
 
         [HttpGet]
-        [Route("Obter/{livroId}")]
-        public async Task<ActionResult> Obter([FromRoute] int livroId)
+        [Route("ObterPeloId/{livroId}")]
+        public async Task<ActionResult> ObterPeloId([FromRoute] int livroId)
         {
             try
             {
                 var livroDominio = await _livroAplicacao.ObterPeloIdAsync(livroId);
-
-                var livro = new LivroResposta()
-                {
-                    Id = livroDominio.Id,
-                    Titulo = livroDominio.Titulo,
-                    Autor = livroDominio.Autor,
-                    GeneroLiterario = livroDominio.GeneroLiterario,
-                    QuantidadeDePaginas = livroDominio.QuantidadeDePaginas,
-                    Sinopse = livroDominio.Sinopse
-                };
-                return Ok(livro);
+                return Ok(livroDominio);
             }
             catch (Exception excecao)
             {
@@ -113,17 +85,8 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var livrosDominio = await _livroAplicacao.ListarAsync();
-                var livros = livrosDominio.Select(livro => new LivroResposta()
-                {
-                    Id = livro.Id,
-                    Titulo = livro.Titulo,
-                    Autor = livro.Autor,
-                    GeneroLiterario = livro.GeneroLiterario,
-                    QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                    Sinopse = livro.Sinopse
-                }).ToList();
 
-                return Ok(livros);
+                return Ok(livrosDominio);
             }
             catch (Exception excecao)
             {

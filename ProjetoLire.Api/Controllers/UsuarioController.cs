@@ -24,17 +24,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var usuarioDominio = new Usuario()
-                {
-                    Nome = usuario.Nome,
-                    Sobrenome = usuario.Sobrenome,
-                    DataNascimento = usuario.DataNascimento,
-                    Email = usuario.Email,
-                    Senha = usuario.Senha,
-                    Genero = usuario.Genero
-                };
-
-                var usuarioId = await _usuarioAplicacao.CriarAsync(usuarioDominio);
+                var usuarioId = await _usuarioAplicacao.CriarAsync(usuario);
                 return Ok(usuarioId);
             }
             catch (Exception excecao)
@@ -49,16 +39,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var usuarioDominio = new Usuario()
-                {
-                    Id = usuario.Id,
-                    Nome = usuario.Nome,
-                    Sobrenome = usuario.Sobrenome,
-                    DataNascimento = usuario.DataNascimento,
-                    Email = usuario.Email
-                };
-
-                await _usuarioAplicacao.AtualizarAsync(usuarioDominio);
+                await _usuarioAplicacao.AtualizarAsync(usuario);
                 return Ok();
             }
             catch (Exception excecao)
@@ -89,19 +70,7 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var usuarioDominio = await _usuarioAplicacao.ObterPeloIdAsync(usuarioId);
-
-                var usuario = new UsuarioResposta()
-                {
-                    Id = usuarioDominio.Id,
-                    Nome = usuarioDominio.Nome,
-                    Sobrenome = usuarioDominio.Sobrenome,
-                    DataNascimento = usuarioDominio.DataNascimento,
-                    Email = usuarioDominio.Email,
-                    Genero = usuarioDominio.Genero,
-                    DataCriacaoDaConta = usuarioDominio.DataCriacaoDaConta,
-                    GenerosLiterariosFavorito = usuarioDominio.GenerosLiterariosFavorito
-                };
-                return Ok(usuario);
+                return Ok(usuarioDominio);
             }
             catch (Exception excecao)
             {
@@ -115,20 +84,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var usuarioDominio = await _usuarioAplicacao.ObterPeloEmail(email);
-
-                var usuario = new UsuarioResposta()
-                {
-                    Id = usuarioDominio.Id,
-                    Nome = usuarioDominio.Nome,
-                    Sobrenome = usuarioDominio.Sobrenome,
-                    DataNascimento = usuarioDominio.DataNascimento,
-                    Email = usuarioDominio.Email,
-                    Genero = usuarioDominio.Genero,
-                    DataCriacaoDaConta = usuarioDominio.DataCriacaoDaConta,
-                    GenerosLiterariosFavorito = usuarioDominio.GenerosLiterariosFavorito
-                };
-                return Ok(usuario);
+                var usuarioDominio = await _usuarioAplicacao.ObterPeloEmailAsync(email);
+                return Ok(usuarioDominio);
             }
             catch (Exception excecao)
             {
@@ -143,19 +100,7 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var usuariosDominio = await _usuarioAplicacao.ListarAsync();
-                var usuarios = usuariosDominio.Select(usuario => new UsuarioResposta()
-                {
-                    Id = usuario.Id,
-                    Nome = usuario.Nome,
-                    Sobrenome = usuario.Sobrenome,
-                    DataNascimento = usuario.DataNascimento,
-                    Email = usuario.Email,
-                    Genero = usuario.Genero,
-                    DataCriacaoDaConta = usuario.DataCriacaoDaConta,
-                    GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito
-                }).ToList();
-
-                return Ok(usuarios);
+                return Ok(usuariosDominio);
             }
             catch (Exception excecao)
             {

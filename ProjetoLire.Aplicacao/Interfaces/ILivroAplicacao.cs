@@ -1,13 +1,14 @@
+using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface ILivroAplicacao
     {
-        public Task<int> CadastrarAsync(Livro livro);
-        public Task AtualizarAsync(Livro livro);
+        public Task<int> CadastrarAsync(LivroCriar livro);
+        public Task AtualizarAsync(LivroAtualizar livro);
         public Task DeletarAsync(int livroId);
-        public Task<Livro> ObterPeloIdAsync(int livroId);
-        public Task<List<Livro>> ListarAsync();
+        public Task<LivroResposta> ObterPeloIdAsync(int livroId);
+        public Task<List<LivroResposta>> ListarAsync();
     }
 }
