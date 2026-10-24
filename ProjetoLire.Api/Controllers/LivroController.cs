@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
-using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.API.Controllers
 {
@@ -85,7 +84,6 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var livrosDominio = await _livroAplicacao.ListarAsync();
-
                 return Ok(livrosDominio);
             }
             catch (Exception excecao)

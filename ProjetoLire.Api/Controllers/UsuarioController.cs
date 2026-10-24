@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoLire.Aplicacao.DTO;
-using ProjetoLire.Aplicacao;
-using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Aplicacao.Interfaces;
 
 namespace ProjetoLire.API.Controllers

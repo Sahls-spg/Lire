@@ -1,7 +1,6 @@
 using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Aplicacao.JWT;
-using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.Aplicacao
 {

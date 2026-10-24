@@ -1,3 +1,4 @@
+using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Interfaces;
@@ -13,77 +14,86 @@ namespace ProjetoLire.Aplicacao
             _leituraRepositorio = leituraRepositorio;
         }
 
-        public async Task<int> RegistrarAsync(Leitura leitura)
+        public async Task<int> RegistrarAsync(LeituraCriar leitura)
         {
-            if(leitura == null)
+            if (leitura == null)
             {
                 throw new Exception("A leitura não pode ser vazia.");
             }
 
-            ValidarInformacoesLeitura(leitura);
+            var leituraDominio = new Leitura()
+            {
+                UsuarioId = leitura.UsuarioId,
+                LivroId = leitura.LivroId,
+                PaginaAtual = leitura.PaginaAtual,
+                DataRegistro = leitura.DataRegistro
+            };
 
-            _leituraRepositorio.Registrar(leitura);
+            _leituraRepositorio.Registrar(leituraDominio);
 
-            return leitura.Id;
+            return leituraDominio.Id;
         }
 
-        public async Task AtualizarAsync(Leitura leitura)
+        public async Task AtualizarAsync(LeituraAtualizar leitura)
         {
             var leituraDominio = _leituraRepositorio.ObterPeloId(leitura.Id);
 
-            if(leituraDominio == null)
+            if (leituraDominio == null)
             {
                 throw new Exception("A leitura não pode ser vazia.");
             }
 
-            ValidarInformacoesLeitura(leitura);
+            if (leitura.PaginaAtual <= 0)
+            {
+                throw new Exception("A página atual do livro não pode ser negativa.");
+            }
 
             leituraDominio.PaginaAtual = leitura.PaginaAtual;
             leituraDominio.DataRegistro = leitura.DataRegistro;
 
-            _leituraRepositorio.Atualizar(leitura);
+            _leituraRepositorio.Atualizar(leituraDominio);
         }
 
-        public async Task<List<Leitura>> ListarAsync()
+        public async Task<List<LeituraResposta>> ListarAsync()
         {
-            var listaLeituras = _leituraRepositorio.Listar();
+            var leiturasDominio = _leituraRepositorio.Listar();
 
-            if(listaLeituras == null)
+            if (leiturasDominio == null)
             {
                 throw new Exception("Não há leituras para listar.");
             }
 
-            return listaLeituras;
+            var leituras = leiturasDominio.Select(leitura => new LeituraResposta()
+            {
+                Id = leitura.Id,
+                UsuarioId = leitura.UsuarioId,
+                LivroId = leitura.LivroId,
+                PaginaAtual = leitura.PaginaAtual,
+                DataRegistro = leitura.DataRegistro
+            }).ToList();
+
+            return leituras;
         }
 
-        public async Task<List<Leitura>> ListarPorUsuarioAsync(int usuarioId)
+        public async Task<List<LeituraResposta>> ListarPorUsuarioAsync(int usuarioId)
         {
-            var listaLeiturasUsuario = _leituraRepositorio.ListarPorUsuario(usuarioId);
+            var leiturasUsuarioDominio = _leituraRepositorio.ListarPorUsuario(usuarioId);
 
-            if(listaLeiturasUsuario == null)
+            if (leiturasUsuarioDominio == null)
             {
                 throw new Exception("Esse usuário não tem leituras para listar.");
             }
 
-            return listaLeiturasUsuario;
-        }
-
-        private static void ValidarInformacoesLeitura(Leitura leitura)
-        {
-            if(leitura.Usuario == null)
+            var leiturasUsuario = leiturasUsuarioDominio.Select(leitura => new LeituraResposta()
             {
-                throw new Exception("O usuário não pode ser vazio.");
-            }
+                Id = leitura.Id,
+                UsuarioId = leitura.UsuarioId,
+                LivroId = leitura.LivroId,
+                PaginaAtual = leitura.PaginaAtual,
+                DataRegistro = leitura.DataRegistro
+            }).ToList();
 
-            if(leitura.Livro == null)
-            {
-                throw new Exception("O livro não pode ser vazio.");
-            }
-
-            if(leitura.PaginaAtual <= 0)
-            {
-                throw new Exception("A página atual do livro não pode ser negativa.");
-            }
+            return leiturasUsuario;
         }
     }
 }

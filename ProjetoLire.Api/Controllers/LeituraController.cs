@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
-using ProjetoLire.Dominio.Entidades;
 
 namespace ProjetoLire.API.Controllers
 {
@@ -25,15 +24,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var leituraDominio = new Leitura()
-                {
-                    UsuarioId = leitura.UsuarioId,
-                    LivroId = leitura.LivroId,
-                    PaginaAtual = leitura.PaginaAtual,
-                    DataRegistro = leitura.DataRegistro
-                };
-
-                var leituraId = await _leituraAplicacao.RegistrarAsync(leituraDominio);
+                var leituraId = await _leituraAplicacao.RegistrarAsync(leitura);
                 return Ok(leituraId);
             }
             catch (Exception excecao)
@@ -48,15 +39,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var leituraDominio = new Leitura()
-                {
-                    UsuarioId = leitura.UsuarioId,
-                    LivroId = leitura.LivroId,
-                    PaginaAtual = leitura.PaginaAtual,
-                    DataRegistro = leitura.DataRegistro
-                };
-
-                await _leituraAplicacao.AtualizarAsync(leituraDominio);
+                await _leituraAplicacao.AtualizarAsync(leitura);
                 return Ok();
             }
             catch (Exception excecao)
@@ -71,18 +54,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var leituraDominio = await _leituraAplicacao.ListarAsync();
-
-                var leituras = leituraDominio.Select(leitura => new LeituraResposta()
-                {
-                    Id = leitura.Id,
-                    UsuarioId = leitura.UsuarioId,
-                    LivroId = leitura.LivroId,
-                    PaginaAtual = leitura.PaginaAtual,
-                    DataRegistro = leitura.DataRegistro
-                }).ToList();
-
-                return Ok(leituras);
+                var leiturasDominio = await _leituraAplicacao.ListarAsync();
+                return Ok(leiturasDominio);
             }
             catch (Exception excecao)
             {
@@ -97,17 +70,7 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var leituraUsuarioDominio = await _leituraAplicacao.ListarPorUsuarioAsync(usuarioId);
-
-                var leiturasUsuario = leituraUsuarioDominio.Select(leitura => new LeituraResposta()
-                {
-                    Id = leitura.Id,
-                    UsuarioId = leitura.UsuarioId,
-                    LivroId = leitura.LivroId,
-                    PaginaAtual = leitura.PaginaAtual,
-                    DataRegistro = leitura.DataRegistro
-                }).ToList();
-
-                return Ok(leiturasUsuario);
+                return Ok(leituraUsuarioDominio);
             }
             catch (Exception excecao)
             {

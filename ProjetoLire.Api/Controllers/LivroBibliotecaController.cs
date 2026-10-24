@@ -26,17 +26,7 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var livrosBibliotecaDominio = await _livroBibliotecaAplicacao.ListarPorUsuarioAsync(usuarioId);
-
-                var livrosBibliotecaUsuario = livrosBibliotecaDominio.Select(livroBiblioteca => new LivroBibliotecaResposta()
-                {
-                    Id = livroBiblioteca.Id,
-                    UsuarioId = livroBiblioteca.UsuarioId,
-                    LivroId = livroBiblioteca.LivroId,
-                    StatusLeitura = livroBiblioteca.StatusLeitura,
-                    DataAdicionado = livroBiblioteca.DataAdicionado
-                }).ToList();
-
-                return Ok(livrosBibliotecaUsuario);
+                return Ok(livrosBibliotecaDominio);
             }
             catch (Exception excecao)
             {
@@ -51,17 +41,7 @@ namespace ProjetoLire.API.Controllers
             try
             {
                 var livrosStatusDominio = await _livroBibliotecaAplicacao.ListarPorStatusAsync(usuarioId, statusLeitura);
-
-                var livrosStatusUsuario = livrosStatusDominio.Select(livroBiblioteca => new LivroBibliotecaResposta()
-                {
-                    Id = livroBiblioteca.Id,
-                    UsuarioId = livroBiblioteca.UsuarioId,
-                    LivroId = livroBiblioteca.LivroId,
-                    StatusLeitura = livroBiblioteca.StatusLeitura,
-                    DataAdicionado = livroBiblioteca.DataAdicionado
-                }).ToList();
-
-                return Ok(livrosStatusUsuario);
+                return Ok(livrosStatusDominio);
             }
             catch (Exception excecao)
             {

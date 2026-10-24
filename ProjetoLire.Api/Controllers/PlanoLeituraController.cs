@@ -25,18 +25,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var planoLeituraDominio = new PlanoLeitura()
-                {
-                    UsuarioId = planoLeitura.UsuarioId,
-                    LivroId = planoLeitura.LivroId,
-                    DataInicio = planoLeitura.DataInicio,
-                    TempoDiarioPraLer = planoLeitura.TempoDiarioPraLer,
-                    DiasDisponiveisParaLer = planoLeitura.DiasDisponiveisParaLer,
-                    PaginasPorDia = planoLeitura.PaginasPorDia,
-                    DataPrevisaoTermino = planoLeitura.DataPrevisaoTermino
-                };
-
-                var planoLeituraId = await _planoLeituraAplicacao.CriarAsync(planoLeituraDominio);
+                var planoLeituraId = await _planoLeituraAplicacao.CriarAsync(planoLeitura);
                 return Ok(planoLeituraId);
             }
             catch (Exception excecao)
@@ -51,20 +40,7 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var planoLeituraDominio = await _planoLeituraAplicacao.ObterPeloIdAsync(planoLeituraId);
-
-                var planoLeitura = new PlanoLeituraResposta()
-                {
-                    Id = planoLeituraDominio.Id,
-                    UsuarioId = planoLeituraDominio.UsuarioId,
-                    LivroId = planoLeituraDominio.LivroId,
-                    DataInicio = planoLeituraDominio.DataInicio,
-                    TempoDiarioPraLer = planoLeituraDominio.TempoDiarioPraLer,
-                    DiasDisponiveisParaLer = planoLeituraDominio.DiasDisponiveisParaLer,
-                    PaginasPorDia = planoLeituraDominio.PaginasPorDia,
-                    DataPrevisaoTermino = planoLeituraDominio.DataPrevisaoTermino
-                };
-
+                var planoLeitura = await _planoLeituraAplicacao.ObterPeloIdAsync(planoLeituraId);
                 return Ok(planoLeitura);
             }
             catch (Exception excecao)
@@ -79,21 +55,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var planosLeituraDominio = await _planoLeituraAplicacao.ListarAsync();
-
-                var planos = planosLeituraDominio.Select(plano => new PlanoLeituraResposta()
-                {
-                    Id = plano.Id,
-                    UsuarioId = plano.UsuarioId,
-                    LivroId = plano.LivroId,
-                    DataInicio = plano.DataInicio,
-                    TempoDiarioPraLer = plano.TempoDiarioPraLer,
-                    DiasDisponiveisParaLer = plano.DiasDisponiveisParaLer,
-                    PaginasPorDia = plano.PaginasPorDia,
-                    DataPrevisaoTermino = plano.DataPrevisaoTermino
-                }).ToList();
-
-                return Ok(planos);
+                var planosLeitura = await _planoLeituraAplicacao.ListarAsync();
+                return Ok(planosLeitura);
             }
             catch (Exception excecao)
             {
@@ -107,21 +70,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var planosLeituraDominio = await _planoLeituraAplicacao.ListarPorUsuarioAsync(usuarioId);
-
-                var planosUsuario = planosLeituraDominio.Select(planoUsuario => new PlanoLeituraResposta()
-                {
-                    Id = planoUsuario.Id,
-                    UsuarioId = planoUsuario.UsuarioId,
-                    LivroId = planoUsuario.LivroId,
-                    DataInicio = planoUsuario.DataInicio,
-                    TempoDiarioPraLer = planoUsuario.TempoDiarioPraLer,
-                    DiasDisponiveisParaLer = planoUsuario.DiasDisponiveisParaLer,
-                    PaginasPorDia = planoUsuario.PaginasPorDia,
-                    DataPrevisaoTermino = planoUsuario.DataPrevisaoTermino
-                }).ToList();
-
-                return Ok(planosUsuario);
+                var planosLeitura = await _planoLeituraAplicacao.ListarPorUsuarioAsync(usuarioId);
+                return Ok(planosLeitura);
             }
             catch (Exception excecao)
             {
