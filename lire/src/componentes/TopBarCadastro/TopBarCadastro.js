@@ -1,14 +1,11 @@
 import style from "./TopBarCadastro.module.css";
-import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo L.png"
 
-export function TopBarCadastro({ children, childrenTopo })
-{
+export function TopBarCadastro({ children }) {
     return (
         <div>
             <div className={style.topbar_conteudo}>
-                <div className={style.area_topo}>
-                    {childrenTopo}
-                </div>
+                <img src={Logo} alt="Logo Lire" className={style.logo}/>
             </div>
             <div className={style.pagina_conteudo}>
                 {children}
