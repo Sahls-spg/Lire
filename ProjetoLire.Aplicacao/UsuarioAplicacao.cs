@@ -35,6 +35,8 @@ namespace ProjetoLire.Aplicacao
                 Genero = usuario.Genero,
                 Email = usuario.Email,
                 Senha = usuario.Senha,
+                QuantidadeDeLivrosLidos = usuario.QuantidadeLivrosLidos,
+                GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito,
                 DataNascimento = usuario.DataNascimento
             };
 
@@ -92,6 +94,7 @@ namespace ProjetoLire.Aplicacao
                 Sobrenome = usuarioDominio.Sobrenome,
                 Genero = usuarioDominio.Genero,
                 Email = usuarioDominio.Email,
+                QuantidadeLivrosLidos = usuarioDominio.QuantidadeDeLivrosLidos,
                 DataNascimento = usuarioDominio.DataNascimento,
                 DataCriacaoDaConta = usuarioDominio.DataCriacaoDaConta,
                 GenerosLiterariosFavorito = usuarioDominio.GenerosLiterariosFavorito
@@ -129,6 +132,7 @@ namespace ProjetoLire.Aplicacao
                     Sobrenome = usuario.Sobrenome,
                     Genero = usuario.Genero,
                     Email = usuario.Email,
+                    QuantidadeLivrosLidos = usuario.QuantidadeDeLivrosLidos,
                     DataNascimento = usuario.DataNascimento,
                     DataCriacaoDaConta = usuario.DataCriacaoDaConta,
                     GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito

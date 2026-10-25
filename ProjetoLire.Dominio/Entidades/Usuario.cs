@@ -10,6 +10,7 @@ namespace ProjetoLire.Dominio.Entidades
         public Genero Genero { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public int QuantidadeDeLivrosLidos { get; set; }
         public DateOnly DataNascimento { get; set; }
         public DateOnly DataCriacaoDaConta { get; set; }
         public List<GeneroLiterario> GenerosLiterariosFavorito { get; set; }

@@ -16,6 +16,7 @@ namespace ProjetoLire.Repositorio.Configuracoes
             builder.Property(usuario => usuario.Genero).HasColumnName("Genero").IsRequired(true);
             builder.Property(usuario => usuario.Email).HasColumnName("Email").IsRequired(true);
             builder.Property(usuario => usuario.Senha).HasColumnName("Senha").IsRequired(true);
+            builder.Property(usuario => usuario.QuantidadeDeLivrosLidos).HasColumnName("QuantidadeLivrosLidos").IsRequired(true);
             builder.Property(usuario => usuario.DataNascimento).HasColumnName("DataNascimento").IsRequired(true);
             builder.Property(usuario => usuario.DataCriacaoDaConta).HasColumnName("DataCriacaoDaConta").IsRequired(true);
 
