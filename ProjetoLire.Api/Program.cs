@@ -32,8 +32,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
-
 builder.Services.AddDbContext<ProjetoLireContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Lire")));
 
 builder.Services.AddScoped<IUsuarioAplicacao, UsuarioAplicacao>();
@@ -49,7 +47,18 @@ builder.Services.AddScoped<ILeituraRepositorio, LeituraRepositorio>();
 builder.Services.AddScoped<IPlanoLeituraRepositorio, PlanoLeituraRepositorio>();
 builder.Services.AddScoped<ILivroBibliotecaRepositorio, LivroBibliotecaRepositorio>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+        .SetIsOriginAllowedToAllowWildcardSubdomains()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
@@ -59,6 +68,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseCors();
     app.UseSwagger();
     app.UseSwaggerUI();
 }

@@ -26,12 +26,12 @@ namespace ProjetoLire.Aplicacao
 
             if(usuario == null)
             {
-                throw new Exception("Usuário não encontrado, verifique se o e-mail informado está correto");
+                throw new Exception("Usuário não encontrado, verifique se o e-mail informado está correto.");
             }
 
             if(usuario.Senha != loginRequisicao.Senha)
             {
-                throw new Exception("Senha inválida, verifique se a senha informada está correta");
+                throw new Exception("Senha inválida, verifique se a senha informada está correta.");
             }
 
             var tokenGerado = _tokenservice.GerarToken(usuario);
