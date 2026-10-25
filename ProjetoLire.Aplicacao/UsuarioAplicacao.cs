@@ -1,6 +1,7 @@
 using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
+using ProjetoLire.Dominio.Enumeradores;
 using ProjetoLire.Repositorio.Interfaces;
 
 namespace ProjetoLire.Aplicacao
@@ -136,6 +137,18 @@ namespace ProjetoLire.Aplicacao
                 .ToList();
 
             return listaUsuarios;
+        }
+
+        public async Task<List<Genero>> ListarGeneros()
+        {
+            var generos = _usuarioRepositorio.ListarGeneros();
+            return generos;
+        }
+
+        public async Task<List<GeneroLiterario>> ListarGenerosLiterarios()
+        {
+            var generosLiterarios = _usuarioRepositorio.ListarGenerosLiterarios();
+            return generosLiterarios;
         }
 
         private static void ValidarInformacoesUsuario(string nome, string sobrenome, string email)

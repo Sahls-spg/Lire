@@ -105,5 +105,35 @@ namespace ProjetoLire.API.Controllers
                 return BadRequest(excecao.Message);
             }
         }
+
+        [HttpGet]
+        [Route("ListarGeneros")]
+        public async Task<ActionResult> ListarGeneros()
+        {
+            try
+            {
+                var generos = await _usuarioAplicacao.ListarGeneros();
+                return Ok(generos);
+            }
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("ListarGenerosLiterarios")]
+        public async Task<ActionResult> ListarGenerosLiterarios()
+        {
+            try
+            {
+                var generosLiterarios = await _usuarioAplicacao.ListarGenerosLiterarios();
+                return Ok(generosLiterarios);
+            }
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+        }
     }
 }

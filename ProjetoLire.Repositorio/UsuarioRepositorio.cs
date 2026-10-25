@@ -1,4 +1,5 @@
 using ProjetoLire.Dominio.Entidades;
+using ProjetoLire.Dominio.Enumeradores;
 using ProjetoLire.Repositorio.Contexto;
 using ProjetoLire.Repositorio.Interfaces;
 
@@ -42,6 +43,16 @@ namespace ProjetoLire.Repositorio
         public List<Usuario> Listar()
         {
             return _contexto.Usuarios.ToList();
+        }
+
+        public List<Genero> ListarGeneros()
+        {
+            return Enum.GetValues<Genero>().ToList();
+        }
+
+        public List<GeneroLiterario> ListarGenerosLiterarios()
+        {
+            return Enum.GetValues<GeneroLiterario>().ToList();
         }
     }
 }
