@@ -43,21 +43,20 @@ export function Login() {
             const response = await LoginAPI.loginAsync(email, senha);
 
             if (response?.status === 200) {
+                localStorage.setItem("token", response.data.token);
                 navigate("/home");
             };
         }
         catch (error) {
-            if (error.response?.status === 400) {
-                alert("Usuário não encontrado, faça seu cadastro!");
+            const mensagem = error.response?.data;
+
+            if (mensagem != null) {
+                alert(mensagem);
                 setEmail("");
                 setSenha("");
             }
-            else if (error.response?.status === 401) {
-                alert("Senha incorreta, porfavor digite sua senha novamente.");
-                setSenha("");
-            }
             else {
-                alert("Erro ao fazer login.");
+                alert("Ocorreu um erro ao fazer login, tente novamente.");
             }
         }
     }
