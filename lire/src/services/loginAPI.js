@@ -10,7 +10,7 @@ const LoginAPI = {
                 Email: email,
                 Senha: senha
             };
-            const response = await HTTPClient.post(`/api/Login`,usuarioLogin);
+            const response = await HTTPClient.post(`/Login`,usuarioLogin);
             return response;
         }
         catch(error)

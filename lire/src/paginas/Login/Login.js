@@ -48,15 +48,17 @@ export function Login() {
             };
         }
         catch (error) {
-            const mensagem = error.response?.data;
-
-            if (mensagem != null) {
-                alert(mensagem);
+            if (error.response?.status === 400) {
+                alert("Usuário não encontrado, faça seu cadastro!");
                 setEmail("");
                 setSenha("");
             }
+            else if (error.response?.status === 401) {
+                alert("Senha incorreta, porfavor digite sua senha novamente.");
+                setSenha("");
+            }
             else {
-                alert("Ocorreu um erro ao fazer login, tente novamente.");
+                alert("Erro ao fazer login.");
             }
         }
     }

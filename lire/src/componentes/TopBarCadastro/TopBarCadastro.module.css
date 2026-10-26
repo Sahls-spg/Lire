@@ -1,0 +1,32 @@
+.topbar_conteudo {
+    background-color: #200c01;
+    position: fixed;
+    width: 100%;
+    height: 65px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.pagina_conteudo {
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 65px;
+}
+
+.logo
+{
+   height: 40px;
+    width: auto;
+    display: block;
+    position: relative;
+    top: 8px;
+    margin: 5px
+}
+
+@media (max-width: 768px) 
+{
+    .topbar_conteudo 
+    {
+        width: 100%;
+    }
+}
