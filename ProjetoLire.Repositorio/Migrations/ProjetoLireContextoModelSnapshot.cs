@@ -207,6 +207,10 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Nome");
 
+                    b.Property<int>("QuantidadeDeLivrosLidos")
+                        .HasColumnType("int")
+                        .HasColumnName("QuantidadeLivrosLidos");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")

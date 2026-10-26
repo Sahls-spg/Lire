@@ -1,5 +1,8 @@
+using System.Text.Json.Serialization;
+
 namespace ProjetoLire.Dominio.Enumeradores
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum GeneroLiterario
     {
         Romance,
@@ -8,9 +11,10 @@ namespace ProjetoLire.Dominio.Enumeradores
         Terror,
         Misterio,
         Aventura,
-        FicçãoCientifica,
+        Ficção,
         Religioso,
         Biografia,
-        Autoajuda
+        Autoajuda,
+        Nenhum
     }
 }

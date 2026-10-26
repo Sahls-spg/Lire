@@ -39,6 +39,7 @@ namespace ProjetoLire.Repositorio.Migrations
                     Genero = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuantidadeLivrosLidos = table.Column<int>(type: "int", nullable: false),
                     DataNascimento = table.Column<DateOnly>(type: "date", nullable: false),
                     DataCriacaoDaConta = table.Column<DateOnly>(type: "date", nullable: false),
                     GenerosLiterariosFavorito = table.Column<string>(type: "nvarchar(max)", nullable: true)

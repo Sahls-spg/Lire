@@ -12,7 +12,7 @@ using ProjetoLire.Repositorio.Contexto;
 namespace ProjetoLire.Repositorio.Migrations
 {
     [DbContext(typeof(ProjetoLireContexto))]
-    [Migration("20261022020830_Inicial")]
+    [Migration("20261025211218_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -209,6 +209,10 @@ namespace ProjetoLire.Repositorio.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Nome");
+
+                    b.Property<int>("QuantidadeDeLivrosLidos")
+                        .HasColumnType("int")
+                        .HasColumnName("QuantidadeLivrosLidos");
 
                     b.Property<string>("Senha")
                         .IsRequired()
