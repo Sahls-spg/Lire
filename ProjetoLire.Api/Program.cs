@@ -8,6 +8,7 @@ using ProjetoLire.Aplicacao.JWT;
 using ProjetoLire.Repositorio;
 using ProjetoLire.Repositorio.Contexto;
 using ProjetoLire.Repositorio.Interfaces;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,13 @@ builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();
 builder.Services.AddScoped<ILeituraRepositorio, LeituraRepositorio>();
 builder.Services.AddScoped<IPlanoLeituraRepositorio, PlanoLeituraRepositorio>();
 builder.Services.AddScoped<ILivroBibliotecaRepositorio, LivroBibliotecaRepositorio>();
+
+builder.Services.AddControllers()
+    .AddJsonOptions(opcoes =>
+        opcoes.JsonSerializerOptions.Converters.Add(
+            new JsonStringEnumConverter()
+        )
+    );
 
 builder.Services.AddCors(options =>
 {

@@ -1,5 +1,6 @@
 using ProjetoLire.Aplicacao.DTO;
 using ProjetoLire.Dominio.Entidades;
+using ProjetoLire.Dominio.Enumeradores;
 
 namespace ProjetoLire.Aplicacao.Interfaces
 {
@@ -11,5 +12,7 @@ namespace ProjetoLire.Aplicacao.Interfaces
         public Task<UsuarioResposta> ObterPeloIdAsync(int usuarioId);
         public Task<Usuario> ObterPeloEmailAsync(string email);
         public Task<List<UsuarioResposta>> ListarAsync();
+        public Task<List<Genero>> ListarGeneros();
+        public Task<List<GeneroLiterario>> ListarGenerosLiterarios();
     }
 }

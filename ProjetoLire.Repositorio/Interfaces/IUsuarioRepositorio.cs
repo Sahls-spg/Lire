@@ -1,4 +1,5 @@
 using ProjetoLire.Dominio.Entidades;
+using ProjetoLire.Dominio.Enumeradores;
 
 namespace ProjetoLire.Repositorio.Interfaces
 {
@@ -10,5 +11,7 @@ namespace ProjetoLire.Repositorio.Interfaces
         public Usuario ObterPeloId(int usuarioId);
         public Usuario ObterPeloEmail(string email);
         public List<Usuario> Listar();
+        public List<Genero> ListarGeneros();
+        public List<GeneroLiterario> ListarGenerosLiterarios();
     }
 }
