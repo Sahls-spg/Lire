@@ -1,5 +1,4 @@
-.pagina_cadastro 
-{
+.pagina_cadastro {
     box-sizing: border-box;
     min-height: 100vh;
     width: 100%;
@@ -11,8 +10,7 @@
     background-color: #e0cfbf;
 }
 
-.pagina_conteudo 
-{
+.pagina_conteudo {
     box-sizing: border-box;
     padding: 30px 40px;
     background-color: #f3e8e2;
@@ -25,8 +23,7 @@
     border-radius: 15px;
 }
 
-.pagina_cabecalho 
-{
+.pagina_cabecalho {
     text-align: center;
     margin-bottom: 20px;
 }
@@ -34,32 +31,30 @@
 .linha_formulario {
     display: flex;
     gap: 15px;
+
+    & div {
+        flex: 1;
+    }
 }
 
 .grupo_formulario {
     flex: 1;
 }
 
-.linha_formulario > div {
-    flex: 1;
-}
-
-h2 
-{
+h2 {
     color: #2e1603;
     font-size: 25px;
     margin-bottom: 8px;
     font-variant: small-caps;
 }
 
-h4 
-{
+h4 {
     color: #2e1603;
     font-size: 14px;
     margin-bottom: 0;
 }
 
-.pagina_conteudo form 
+form 
 {
     display: flex;
     flex-direction: column;
@@ -69,7 +64,7 @@ h4
     margin: 0 auto;
 }
 
-.pagina_conteudo form label 
+label 
 {
     display: block;
     margin-bottom: 5px;
@@ -77,8 +72,7 @@ h4
     text-align: left;
 }
 
-.pagina_conteudo form input 
-{
+.pagina_conteudo form input {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -87,8 +81,7 @@ h4
     border-radius: 9px;
 }
 
-.botao_cadastro 
-{
+.botao_cadastro {
     text-decoration: none;
     border: none;
     color: white;
@@ -101,8 +94,7 @@ h4
     cursor: pointer;
 }
 
-.campo_senha
-{
+.campo_senha {
     position: relative;
 }
 
@@ -118,38 +110,34 @@ h4
     align-items: center;
     border: none;
     cursor: pointer;
+    background: none;
 }
 
-.botoes 
-{
+.botoes {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+
+    & button {
+        padding: 9px;
+        border-radius: 20px;
+        color: #2e1603;
+        border: 1px solid #4b2b19;
+        border-radius: 70px;
+        cursor: pointer;
+    }
 }
 
-.botoes button 
-{
-    padding: 9px;
-    border-radius: 20px;
-    color: #2e1603;
-    border: 1px solid #4b2b19;
-    border-radius: 70px;
-    cursor: pointer;
-}
-
-.botoes button:hover 
-{
+.botoes button:hover {
     background-color: #e4d0bd;
 }
 
-.botoes button.selecionado 
-{
+.botoes button.selecionado {
     background-color: #4b2b19;
     color: white;
 }
 
-@media (max-width: 768px) 
-{
+@media (max-width: 768px) {
     .pagina_cadastro {
         padding: 85px;
     }

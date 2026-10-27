@@ -27,7 +27,18 @@ export function Cadastro() {
     };
 
     const validarSenha = () => {
-        return senha.length >= 6
+        if(senha.length > 15)
+        {
+            return alert("A senha deve conter no máximo 12 caracteres.")
+        }
+        else if(senha.length < 6)
+        {
+            return alert("A senha cadastrada deve conter no mínimo 6 caracteres!")
+        }
+        else 
+        {
+            return senha;
+        }
     };
 
     useEffect(() => {
@@ -73,7 +84,6 @@ export function Cadastro() {
         }
 
         if (!validarSenha()) {
-            alert("A senha cadastrada deve conter no mínimo 6 caracteres!");
             return;
         };
 

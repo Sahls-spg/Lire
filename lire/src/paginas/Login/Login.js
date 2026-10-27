@@ -1,9 +1,9 @@
+import style from './Login.module.css'
 import { useState } from "react";
-import Logo from "../../assets/Logo.png"
+import Logo from "../../assets/img/Logo.png"
 import LoginAPI from "../../services/loginAPI";
 import { FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import style from './Login.module.css'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 
@@ -50,8 +50,6 @@ export function Login() {
         catch (error) {
             if (error.response?.status === 400) {
                 alert("Usuário não encontrado, faça seu cadastro!");
-                setEmail("");
-                setSenha("");
             }
             else if (error.response?.status === 401) {
                 alert("Senha incorreta, porfavor digite sua senha novamente.");
