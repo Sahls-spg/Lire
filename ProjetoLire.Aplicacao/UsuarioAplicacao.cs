@@ -22,12 +22,13 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("Usuário não pode ser vazio.");
             }
 
-            ValidarInformacoesUsuario(usuario.Nome, usuario.Sobrenome, usuario.Email);
+            ValidarInformacoesUsuario(usuario.Nome, usuario.Sobrenome, usuario.Email, usuario.DataNascimento);
 
             if (string.IsNullOrEmpty(usuario.Senha))
             {
                 throw new Exception("A senha não pode ser vazia.");
             }
+
 
             var usuarioDominio = new Usuario
             {
@@ -55,7 +56,7 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("Usuário não encontrado.");
             }
 
-            ValidarInformacoesUsuario(usuario.Nome, usuario.Sobrenome, usuario.Email);
+            ValidarInformacoesUsuario(usuario.Nome, usuario.Sobrenome, usuario.Email, usuario.DataNascimento);
 
             usuarioDominio.Id = usuario.Id;
             usuarioDominio.Nome = usuario.Nome;
@@ -155,7 +156,7 @@ namespace ProjetoLire.Aplicacao
             return generosLiterarios;
         }
 
-        private static void ValidarInformacoesUsuario(string nome, string sobrenome, string email)
+        private static void ValidarInformacoesUsuario(string nome, string sobrenome, string email, DateOnly dataNascimento)
         {
             if (string.IsNullOrEmpty(nome))
             {
@@ -170,6 +171,11 @@ namespace ProjetoLire.Aplicacao
             if (string.IsNullOrEmpty(email))
             {
                 throw new Exception("O e-mail não pode ser vazio.");
+            }
+
+            if(dataNascimento > DateOnly.FromDateTime(DateTime.Now.Date))
+            {
+                throw new Exception("A data de nascimento não pode ser maior que a data de hoje.");
             }
         }
     }
