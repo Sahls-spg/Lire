@@ -6,6 +6,7 @@ import { FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import { useAlert } from '../../componentes/Alert/AlertContext';
 
 export function Login() {
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ export function Login() {
     const [verSenha, setVerSenha] = useState('password');
 
     const navigate = useNavigate();
+    const { mostrarAlerta } = useAlert();
 
     const validarEmail = () => {
         return email.length >= 10
@@ -30,12 +32,12 @@ export function Login() {
         e.preventDefault();
 
         if (!validarEmail()) {
-            alert("Insira um e-mail válido!");
+            mostrarAlerta("Insira um e-mail válido!", 'warning');
             return;
         }
 
         if (!validarSenha()) {
-            alert("A senha deve conter no mínimo 6 caracteres!");
+            mostrarAlerta("A senha deve conter no mínimo 6 caracteres!", 'warning');
             return;
         };
 
@@ -48,15 +50,18 @@ export function Login() {
             };
         }
         catch (error) {
-            if (error.response?.status === 400) {
-                alert("Usuário não encontrado, faça seu cadastro!");
+            if (error.response?.status === 400) 
+            {
+                mostrarAlerta("Usuário não encontrado, faça seu cadastro!", 'danger');
             }
-            else if (error.response?.status === 401) {
-                alert("Senha incorreta, porfavor digite sua senha novamente.");
+            else if (error.response?.status === 401) 
+            {
+                mostrarAlerta("Senha incorreta, porfavor digite sua senha novamente.", 'danger');
                 setSenha("");
             }
-            else {
-                alert("Erro ao fazer login.");
+            else 
+            {
+                mostrarAlerta("Erro ao fazer login.", 'danger');
             }
         }
     }

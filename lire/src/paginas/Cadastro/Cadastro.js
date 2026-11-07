@@ -6,6 +6,7 @@ import { FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useEffect } from "react";
 import UsuarioAPI from "../../services/usuarioAPI";
+import { useAlert } from '../../componentes/Alert/AlertContext';
 
 export function Cadastro() {
     const [nome, setNome] = useState("");
@@ -21,6 +22,7 @@ export function Cadastro() {
     const [generoSelecionado, setGeneroSelecionado] = useState("");
 
     const navigate = useNavigate();
+    const { mostrarAlerta } = useAlert();
 
     const validarEmail = () => {
         return email.length >= 10
@@ -29,11 +31,11 @@ export function Cadastro() {
     const validarSenha = () => {
         if(senha.length > 15)
         {
-            return alert("A senha deve conter no máximo 12 caracteres.")
+            return mostrarAlerta("A senha deve conter no máximo 12 caracteres.", 'warning')
         }
         else if(senha.length < 6)
         {
-            return alert("A senha cadastrada deve conter no mínimo 6 caracteres!")
+            return alert("A senha cadastrada deve conter no mínimo 6 caracteres!", 'warning')
         }
         else 
         {
@@ -79,7 +81,7 @@ export function Cadastro() {
         e.preventDefault();
 
         if (!validarEmail()) {
-            alert("Insira um e-mail válido!");
+            mostrarAlerta("Insira um e-mail válido!", 'warning');
             return;
         }
 
@@ -91,7 +93,7 @@ export function Cadastro() {
             const response = await UsuarioAPI.criarAsync(nome, sobrenome, email, senha, quantidadeLivrosLidos, dataNascimento, generoSelecionado, generosLiterariosSelecionado);
 
             if (response?.status === 200) {
-                alert("Usuário cadastrado com sucesso!")
+                mostrarAlerta("Usuário cadastrado com sucesso!", 'sucess')
                 navigate("/home");
             };
         }
@@ -99,10 +101,11 @@ export function Cadastro() {
             const mensagem = error.response?.data;
 
             if (mensagem != null) {
-                alert(mensagem);
+                mostrarAlerta(mensagem, 'danger');
             }
-            else {
-                alert("Ocorreu um erro ao fazer cadastro, tente novamente.");
+            else 
+            {
+                mostrarAlerta("Ocorreu um erro ao fazer cadastro, tente novamente.", 'danger');
             }
         }
     }

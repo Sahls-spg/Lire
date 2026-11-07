@@ -1,0 +1,35 @@
+.alerta 
+{
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    min-width: 300px;
+    max-width: 450px;
+    padding: 18px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    animation: deslizarEntrada 0.3s ease-out;
+}
+
+.success 
+{
+    background-color: #034206;
+}
+
+.warning 
+{
+    background-color: #a05213;
+}
+
+.danger 
+{
+    background-color: #610a0a;
+}
+
+
