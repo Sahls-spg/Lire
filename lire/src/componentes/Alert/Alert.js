@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Alert.module.css'
 
 export function Alert({ mensagem, tipo = 'success', visivel, onFechar}) {
@@ -8,7 +7,7 @@ export function Alert({ mensagem, tipo = 'success', visivel, onFechar}) {
 
     return (
         <div 
-            className={`${styles.alerta} ${classeTipo}`}
+            className={`${styles.alerta_container} ${classeTipo}`}
             onClick={onFechar}
             title="Clique para fechar"
             style={{cursor: 'pointer'}}

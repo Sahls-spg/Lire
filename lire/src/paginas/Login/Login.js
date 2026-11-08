@@ -45,6 +45,7 @@ export function Login() {
             const response = await LoginAPI.loginAsync(email, senha);
 
             if (response?.status === 200) {
+                mostrarAlerta("Bem - vindo(a) ao Lire!", 'sucess');
                 localStorage.setItem("token", response.data.token);
                 navigate("/home");
             };

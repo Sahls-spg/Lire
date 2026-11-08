@@ -35,7 +35,7 @@ export function Cadastro() {
         }
         else if(senha.length < 6)
         {
-            return alert("A senha cadastrada deve conter no mínimo 6 caracteres!", 'warning')
+            return mostrarAlerta("A senha cadastrada deve conter no mínimo 6 caracteres!", 'warning')
         }
         else 
         {
@@ -53,7 +53,7 @@ export function Cadastro() {
                 setGenerosLiterarios(generosLiterarios);
             }
             catch (error) {
-                alert("Não foi possível carregar os gêneros.");
+                mostrarAlerta("Não foi possível carregar os gêneros.");
             }
         }
 
