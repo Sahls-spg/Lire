@@ -30,7 +30,8 @@ namespace ProjetoLire.Aplicacao
                 Autor = livro.Autor,
                 GeneroLiterario = livro.GeneroLiterario,
                 QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                Sinopse = livro.Sinopse
+                Sinopse = livro.Sinopse,
+                ImagemCapa = livro.ImagemCapa
             };
 
             var livroId = _livroRepositorio.Cadastrar(livroDominio);
@@ -86,7 +87,8 @@ namespace ProjetoLire.Aplicacao
                 Autor = livroDominio.Autor,
                 Sinopse = livroDominio.Sinopse,
                 QuantidadeDePaginas = livroDominio.QuantidadeDePaginas,
-                GeneroLiterario = livroDominio.GeneroLiterario
+                GeneroLiterario = livroDominio.GeneroLiterario,
+                ImagemCapa = livroDominio.ImagemCapa
             };
 
             return livro;
@@ -108,7 +110,8 @@ namespace ProjetoLire.Aplicacao
                 Autor = livro.Autor,
                 Sinopse = livro.Sinopse,
                 QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                GeneroLiterario = livro.GeneroLiterario
+                GeneroLiterario = livro.GeneroLiterario,
+                ImagemCapa = livro.ImagemCapa
             }).ToList();
 
 

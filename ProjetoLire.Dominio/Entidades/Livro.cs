@@ -10,5 +10,6 @@ namespace ProjetoLire.Dominio.Entidades
         public GeneroLiterario GeneroLiterario { get; set; }
         public int QuantidadeDePaginas { get; set; }
         public string Sinopse { get; set; }
+        public string ImagemCapa { get; set; }
     }
 }
