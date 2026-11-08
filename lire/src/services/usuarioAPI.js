@@ -65,7 +65,7 @@ const UsuarioAPI = {
         try
         {
             const response = await HTTPClient.get(`/Usuario/ObterPeloId/${usuarioId}`);
-            return response;
+            return response.data;
         }
         catch (error) 
         {

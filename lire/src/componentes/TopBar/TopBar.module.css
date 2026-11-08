@@ -1,37 +1,67 @@
-.topbar_conteudo {
+.topbar_conteudo 
+{
     background-color: #200c01;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 65px;
     box-sizing: border-box;
     z-index: 100;
-}
-
-.pagina_conteudo {
-    box-sizing: border-box;
-    width: 100%;
-    padding-top: 65px;
-}
-
-.botao_deslogar {
-    text-decoration: none;
-    color: #d8c6b5;
-    font-size: 3.5vh;
 
     display: flex;
     align-items: center;
-
-    margin-right: 20px;
+    justify-content: space-between;
+    padding: 25px;
 }
 
-.logo
+h3
 {
-   height: 40px;
+    font-size: 17px;
+}
+
+.pagina_conteudo 
+{
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 65px;
+
+}
+
+.botoes_menu
+{
+    text-decoration: none;
+    color: #d8c6b5;
+    font-size: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.botao_deslogar 
+{
+    text-decoration: none;
+    color: #d8c6b5;
+    font-size: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.logo 
+{
+    height: 40px;
+    gap: 8px;
     width: auto;
     display: block;
-    position: relative;
-    top: 8px;
-    margin: 5px
 }
 
 @media (max-width: 768px) 
@@ -39,5 +69,10 @@
     .topbar_conteudo 
     {
         width: 100%;
+    }
+
+    h3
+    {
+        display: none;
     }
 }
