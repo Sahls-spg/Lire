@@ -1,0 +1,16 @@
+.pagina_conteudo {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e0cfbf;
+
+    & h1 
+    {
+        text-align: left;
+        color: #2e1603;
+    }
+}
