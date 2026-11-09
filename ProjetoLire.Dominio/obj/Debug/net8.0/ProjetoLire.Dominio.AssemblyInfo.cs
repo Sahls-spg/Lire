@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetoLire.Dominio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4536efc019f5d580e2c91a8dc8719a06ca7a44ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2710f45febc02a5493feafb33ce08777db6b4f1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetoLire.Dominio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetoLire.Dominio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

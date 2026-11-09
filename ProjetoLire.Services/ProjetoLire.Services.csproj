@@ -4,6 +4,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoLire.Dominio\ProjetoLire.Dominio.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
