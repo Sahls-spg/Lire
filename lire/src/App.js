@@ -5,6 +5,7 @@ import { Cadastro } from './paginas/Cadastro/Cadastro';
 import { Biblioteca } from './paginas/Biblioteca/Biblioteca';
 import { PlanosDeLeitura } from './paginas/PlanosDeLeitura/PlanosDeLeitura';
 import { Home } from './paginas/Home/Home';
+import { Recomendacoes } from './paginas/Recomendacoes/Recomendacoes';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path='/cadastro' element={<Cadastro/>}/>
             <Route path='/biblioteca' element={<Biblioteca/>}/>
             <Route path='/planosdeleitura' element={<PlanosDeLeitura/>}/>
+            <Route path='recomendacoes' element={<Recomendacoes/>}/>
         </Routes>
     </BrowserRouter>
   );
