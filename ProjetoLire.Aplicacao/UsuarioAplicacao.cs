@@ -22,6 +22,11 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("Usuário não pode ser vazio.");
             }
 
+            if (usuario.DiasDisponiveisParaLer <= 0)
+            {
+                throw new Exception("A quantidade de dias disponíveis para ler não pode ser negativa.");
+            }
+
             ValidarInformacoesUsuario(usuario.Nome, usuario.Sobrenome, usuario.Email, usuario.DataNascimento);
 
             if (string.IsNullOrEmpty(usuario.Senha))
@@ -38,6 +43,8 @@ namespace ProjetoLire.Aplicacao
                 Email = usuario.Email,
                 Senha = usuario.Senha,
                 QuantidadeDeLivrosLidos = usuario.QuantidadeLivrosLidos,
+                TempoDiarioPraLer = usuario.TempoDiarioPraLer,
+                DiasDisponiveisParaLer = usuario.DiasDisponiveisParaLer,
                 GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito,
                 DataNascimento = usuario.DataNascimento
             };
@@ -97,6 +104,8 @@ namespace ProjetoLire.Aplicacao
                 Genero = usuarioDominio.Genero,
                 Email = usuarioDominio.Email,
                 QuantidadeLivrosLidos = usuarioDominio.QuantidadeDeLivrosLidos,
+                TempoDiarioPraLer = usuarioDominio.TempoDiarioPraLer,
+                DiasDisponiveisParaLer = usuarioDominio.DiasDisponiveisParaLer,
                 DataNascimento = usuarioDominio.DataNascimento,
                 DataCriacaoDaConta = usuarioDominio.DataCriacaoDaConta,
                 GenerosLiterariosFavorito = usuarioDominio.GenerosLiterariosFavorito
@@ -135,6 +144,8 @@ namespace ProjetoLire.Aplicacao
                     Genero = usuario.Genero,
                     Email = usuario.Email,
                     QuantidadeLivrosLidos = usuario.QuantidadeDeLivrosLidos,
+                    TempoDiarioPraLer = usuario.TempoDiarioPraLer,
+                    DiasDisponiveisParaLer = usuario.DiasDisponiveisParaLer,
                     DataNascimento = usuario.DataNascimento,
                     DataCriacaoDaConta = usuario.DataCriacaoDaConta,
                     GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito

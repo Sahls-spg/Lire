@@ -14,8 +14,6 @@ namespace ProjetoLire.Repositorio.Configuracoes
             builder.Property(plano => plano.UsuarioId).HasColumnName("UsuarioId").IsRequired(true);
             builder.Property(plano => plano.LivroId).HasColumnName("LivroId").IsRequired(true);
             builder.Property(plano => plano.DataInicio).HasColumnName("DataInicio").IsRequired(true);
-            builder.Property(plano => plano.TempoDiarioPraLer).HasColumnName("TempoDiarioPraLer").IsRequired(true);
-            builder.Property(plano => plano.DiasDisponiveisParaLer).HasColumnName("DiasDisponiveisParaLer").IsRequired(true);
             builder.Property(plano => plano.PaginasPorDia).HasColumnName("PaginasPorDia").IsRequired(true);
             builder.Property(plano => plano.DataPrevisaoTermino).HasColumnName("DataPrevisaoTermino").IsRequired(true);
 

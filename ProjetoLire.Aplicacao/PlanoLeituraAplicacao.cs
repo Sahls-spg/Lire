@@ -21,15 +21,13 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("O plano de leitura não pode ser vazio.");
             }
 
-            ValidarPlanoLeitura(planoLeitura.LivroId, planoLeitura.PaginasPorDia, planoLeitura.DiasDisponiveisParaLer);
+            ValidarPlanoLeitura(planoLeitura.LivroId, planoLeitura.PaginasPorDia);
 
             var planoLeituraDominio = new PlanoLeitura()
             {
                 UsuarioId = planoLeitura.UsuarioId,
                 LivroId = planoLeitura.LivroId,
                 DataInicio = planoLeitura.DataInicio,
-                TempoDiarioPraLer = planoLeitura.TempoDiarioPraLer,
-                DiasDisponiveisParaLer = planoLeitura.DiasDisponiveisParaLer,
                 PaginasPorDia = planoLeitura.PaginasPorDia,
                 DataPrevisaoTermino = planoLeitura.DataPrevisaoTermino
             };
@@ -54,8 +52,6 @@ namespace ProjetoLire.Aplicacao
                 UsuarioId = planoLeituraDominio.UsuarioId,
                 LivroId = planoLeituraDominio.LivroId,
                 DataInicio = planoLeituraDominio.DataInicio,
-                TempoDiarioPraLer = planoLeituraDominio.TempoDiarioPraLer,
-                DiasDisponiveisParaLer = planoLeituraDominio.DiasDisponiveisParaLer,
                 PaginasPorDia = planoLeituraDominio.PaginasPorDia,
                 DataPrevisaoTermino = planoLeituraDominio.DataPrevisaoTermino
             };
@@ -78,8 +74,6 @@ namespace ProjetoLire.Aplicacao
                 UsuarioId = plano.UsuarioId,
                 LivroId = plano.LivroId,
                 DataInicio = plano.DataInicio,
-                TempoDiarioPraLer = plano.TempoDiarioPraLer,
-                DiasDisponiveisParaLer = plano.DiasDisponiveisParaLer,
                 PaginasPorDia = plano.PaginasPorDia,
                 DataPrevisaoTermino = plano.DataPrevisaoTermino
             }).ToList();
@@ -102,8 +96,6 @@ namespace ProjetoLire.Aplicacao
                 UsuarioId = planoUsuario.UsuarioId,
                 LivroId = planoUsuario.LivroId,
                 DataInicio = planoUsuario.DataInicio,
-                TempoDiarioPraLer = planoUsuario.TempoDiarioPraLer,
-                DiasDisponiveisParaLer = planoUsuario.DiasDisponiveisParaLer,
                 PaginasPorDia = planoUsuario.PaginasPorDia,
                 DataPrevisaoTermino = planoUsuario.DataPrevisaoTermino
             }).ToList();
@@ -111,7 +103,7 @@ namespace ProjetoLire.Aplicacao
             return planosLeitura;
         }
 
-        private static void ValidarPlanoLeitura(int livroId, int paginasPorDia, int diasDisponiveisParaLer)
+        private static void ValidarPlanoLeitura(int livroId, int paginasPorDia)
         {
             if (livroId < 0)
             {
@@ -121,11 +113,6 @@ namespace ProjetoLire.Aplicacao
             if (paginasPorDia <= 0)
             {
                 throw new Exception("A quantidade de páginas lidas por dia não pode ser negativa.");
-            }
-
-            if (diasDisponiveisParaLer <= 0)
-            {
-                throw new Exception("A quantidade de dias disponíveis para ler não pode ser negativa.");
             }
         }
     }

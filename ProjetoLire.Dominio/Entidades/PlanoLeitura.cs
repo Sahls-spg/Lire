@@ -8,20 +8,18 @@ namespace ProjetoLire.Dominio.Entidades
         public int LivroId { get; set; }
         public Livro Livro { get; set; }
         public DateOnly DataInicio { get; set; }
-        public TimeOnly TempoDiarioPraLer { get; set; }
-        public int DiasDisponiveisParaLer { get; set; }
         public int PaginasPorDia { get; set; }
         public DateOnly DataPrevisaoTermino { get; set; }
 
         public PlanoLeitura()
         {
-            TimeSpan tempoDiario = TempoDiarioPraLer.ToTimeSpan();
+            TimeSpan tempoDiario = Usuario.TempoDiarioPraLer.ToTimeSpan();
 
-            TimeSpan paginasPorDia = tempoDiario / 5; // 6 pag
+            TimeSpan paginasPorDia = tempoDiario / 5; 
 
             PaginasPorDia = (int)paginasPorDia.TotalDays;
 
-            var paginasSemana = DiasDisponiveisParaLer * paginasPorDia; // 
+            var paginasSemana = Usuario.DiasDisponiveisParaLer * paginasPorDia; // 
 
             var paginasPorSemana = (int)paginasSemana.TotalDays;
 
