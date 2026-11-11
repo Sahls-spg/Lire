@@ -9,6 +9,7 @@ using ProjetoLire.Repositorio;
 using ProjetoLire.Repositorio.Contexto;
 using ProjetoLire.Repositorio.Interfaces;
 using System.Text.Json.Serialization;
+using ProjetoLire.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,9 @@ builder.Services.AddScoped<ILeituraAplicacao, LeituraAplicacao>();
 builder.Services.AddScoped<IPlanoLeituraAplicacao, PlanoLeituraAplicacao>();
 builder.Services.AddScoped<ILivroBibliotecaAplicacao, LivroBibliotecaAplicacao>();
 builder.Services.AddScoped<ILoginAplicacao, LoginAplicacao>();
+builder.Services.AddScoped<IRecomendacaoIAAplicacao, RecomendacaoIAAplicacao>();
+
+builder.Services.AddScoped<IGroqService, GroqService>();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();

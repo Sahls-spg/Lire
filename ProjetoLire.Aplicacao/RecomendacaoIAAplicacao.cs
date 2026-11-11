@@ -1,12 +1,12 @@
+using ProjetoLire.Aplicacao.Interfaces;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Interfaces;
 using ProjetoLire.Services;
 
 namespace ProjetoLire.Aplicacao
 {
-    public class RecomendacaoIAAplicacao
+    public class RecomendacaoIAAplicacao : IRecomendacaoIAAplicacao
     {
-
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly IGroqService _groqService;
         public RecomendacaoIAAplicacao(IUsuarioRepositorio usuarioRepositorio, IGroqService groqService)

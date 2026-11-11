@@ -1,6 +1,5 @@
 using System.Text;
 using System.Text.Json;
-using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Dominio.Enumeradores;
 
 namespace ProjetoLire.Services
