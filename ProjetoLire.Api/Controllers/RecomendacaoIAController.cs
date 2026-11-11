@@ -18,7 +18,7 @@ namespace ProjetoLire.API.Controllers
         }
 
         [HttpPost]
-        [Route("RecomendaçãoLivro/{usuarioId}")]
+        [Route("RecomendacaoLivro/{usuarioId}")]
         public async Task<IActionResult> GerarRecomendacoes([FromRoute] int usuarioId)
         {
             try
