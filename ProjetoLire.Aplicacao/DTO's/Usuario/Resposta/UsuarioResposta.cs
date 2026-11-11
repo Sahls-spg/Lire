@@ -11,6 +11,8 @@ namespace ProjetoLire.Aplicacao.DTO
         public Genero Genero { get; set; }
         public string Email { get; set; }
         public int QuantidadeLivrosLidos { get; set; }
+        public TimeOnly TempoDiarioPraLer { get; set; }
+        public int DiasDisponiveisParaLer { get; set; }
         public DateOnly DataNascimento { get; set; }
         public DateOnly DataCriacaoDaConta { get; set; }
         public List<GeneroLiterario> GenerosLiterariosFavorito { get; set; }

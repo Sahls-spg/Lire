@@ -74,6 +74,10 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("int")
                         .HasColumnName("GeneroLiterario");
 
+                    b.Property<string>("ImagemCapa")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImagemCapa");
+
                     b.Property<int>("QuantidadeDePaginas")
                         .HasColumnType("int")
                         .HasColumnName("QuantidadeDePaginas");
@@ -144,10 +148,6 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("date")
                         .HasColumnName("DataPrevisaoTermino");
 
-                    b.Property<int>("DiasDisponiveisParaLer")
-                        .HasColumnType("int")
-                        .HasColumnName("DiasDisponiveisParaLer");
-
                     b.Property<int>("LivroId")
                         .HasColumnType("int")
                         .HasColumnName("LivroId");
@@ -155,10 +155,6 @@ namespace ProjetoLire.Repositorio.Migrations
                     b.Property<int>("PaginasPorDia")
                         .HasColumnType("int")
                         .HasColumnName("PaginasPorDia");
-
-                    b.Property<TimeOnly>("TempoDiarioPraLer")
-                        .HasColumnType("time")
-                        .HasColumnName("TempoDiarioPraLer");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int")
@@ -190,6 +186,10 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("date")
                         .HasColumnName("DataNascimento");
 
+                    b.Property<int>("DiasDisponiveisParaLer")
+                        .HasColumnType("int")
+                        .HasColumnName("DiasDisponiveisParaLer");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -220,6 +220,10 @@ namespace ProjetoLire.Repositorio.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Sobrenome");
+
+                    b.Property<TimeOnly>("TempoDiarioPraLer")
+                        .HasColumnType("time")
+                        .HasColumnName("TempoDiarioPraLer");
 
                     b.HasKey("Id");
 

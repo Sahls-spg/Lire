@@ -3,7 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjetoLire.Dominio\ProjetoLire.Dominio.csproj" />
     <ProjectReference Include="..\ProjetoLire.Repositorio\ProjetoLire.Repositorio.csproj" />
-    <ProjectReference Include="..\ProjetoLire.Servicos\ProjetoLire.Services.csproj" />
+    <ProjectReference Include="..\ProjetoLire.Services\ProjetoLire.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

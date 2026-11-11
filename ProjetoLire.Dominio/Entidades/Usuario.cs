@@ -11,6 +11,8 @@ namespace ProjetoLire.Dominio.Entidades
         public string Email { get; set; }
         public string Senha { get; set; }
         public int QuantidadeDeLivrosLidos { get; set; }
+        public TimeOnly TempoDiarioPraLer { get; set; }
+        public int DiasDisponiveisParaLer { get; set; }
         public DateOnly DataNascimento { get; set; }
         public DateOnly DataCriacaoDaConta { get; set; }
         public List<GeneroLiterario> GenerosLiterariosFavorito { get; set; }

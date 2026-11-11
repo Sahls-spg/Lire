@@ -8,7 +8,6 @@ namespace ProjetoLire.Services
     public class GroqService : IGroqService
     {
         private readonly HttpClient _httpClient;
-        
         string url = "https://api.groq.com/openai/v1/chat/completions";
         
         public async Task<string?> RecomendarLivrosAsync(DateOnly dataNascimento, Genero genero, int quantidadeLivrosLidos, List<GeneroLiterario> generosFavoritos, TimeOnly tempoDisponivel, int diasDisponiveis)
@@ -47,9 +46,7 @@ namespace ProjetoLire.Services
                 Não inclua explicações, comentários, introduções, formatação Markdown ou qualquer texto fora do JSON.
                 """;
 
-            
-
-            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer ");
+            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer");
 
             var payload = new
             {
@@ -64,6 +61,7 @@ namespace ProjetoLire.Services
 
             var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
 
+            
             HttpResponseMessage resposta = await _httpClient.PostAsync(url, conteudo);
 
             string resultado = await resposta.Content.ReadAsStringAsync();

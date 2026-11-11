@@ -21,7 +21,8 @@ namespace ProjetoLire.Repositorio.Migrations
                     Autor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GeneroLiterario = table.Column<int>(type: "int", nullable: false),
                     QuantidadeDePaginas = table.Column<int>(type: "int", nullable: false),
-                    Sinopse = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Sinopse = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImagemCapa = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,6 +41,8 @@ namespace ProjetoLire.Repositorio.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuantidadeLivrosLidos = table.Column<int>(type: "int", nullable: false),
+                    TempoDiarioPraLer = table.Column<TimeOnly>(type: "time", nullable: false),
+                    DiasDisponiveisParaLer = table.Column<int>(type: "int", nullable: false),
                     DataNascimento = table.Column<DateOnly>(type: "date", nullable: false),
                     DataCriacaoDaConta = table.Column<DateOnly>(type: "date", nullable: false),
                     GenerosLiterariosFavorito = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -114,8 +117,6 @@ namespace ProjetoLire.Repositorio.Migrations
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     LivroId = table.Column<int>(type: "int", nullable: false),
                     DataInicio = table.Column<DateOnly>(type: "date", nullable: false),
-                    TempoDiarioPraLer = table.Column<TimeOnly>(type: "time", nullable: false),
-                    DiasDisponiveisParaLer = table.Column<int>(type: "int", nullable: false),
                     PaginasPorDia = table.Column<int>(type: "int", nullable: false),
                     DataPrevisaoTermino = table.Column<DateOnly>(type: "date", nullable: false)
                 },
