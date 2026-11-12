@@ -90,3 +90,5 @@ C:\Users\Noite\Desktop\Alunos-Noite\Sara\Lire-API\ProjetoLire.Aplicacao\obj\Debu
 C:\Users\Noite\Desktop\Alunos-Noite\Sara\Lire-API\ProjetoLire.Aplicacao\obj\Debug\net8.0\ref\ProjetoLire.Aplicacao.dll
 C:\Users\Noite\Desktop\Alunos-Noite\Sara\Lire-API\ProjetoLire.Aplicacao\bin\Debug\net8.0\ProjetoLire.Services.dll
 C:\Users\Noite\Desktop\Alunos-Noite\Sara\Lire-API\ProjetoLire.Aplicacao\bin\Debug\net8.0\ProjetoLire.Services.pdb
+C:\Users\PCGAME\Desktop\Sara\Lire\ProjetoLire.Aplicacao\bin\Debug\net8.0\ProjetoLire.Services.dll
+C:\Users\PCGAME\Desktop\Sara\Lire\ProjetoLire.Aplicacao\bin\Debug\net8.0\ProjetoLire.Services.pdb

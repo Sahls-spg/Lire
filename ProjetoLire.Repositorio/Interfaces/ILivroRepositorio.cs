@@ -8,6 +8,7 @@ namespace ProjetoLire.Repositorio.Interfaces
         public void Atualizar(Livro livro);
         public void Deletar(Livro livro);
         public Livro ObterPeloId(int livroId);
+        public Livro ObterPeloTituloEAutor(string titulo, string autor);
         public List<Livro> Listar();
     }
 }

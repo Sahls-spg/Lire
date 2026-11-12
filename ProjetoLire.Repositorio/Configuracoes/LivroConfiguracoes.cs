@@ -13,7 +13,7 @@ namespace ProjetoLire.Repositorio.Configuracoes
             builder.Property(livro => livro.Id).HasColumnName("Id").IsRequired(true);
             builder.Property(livro => livro.Titulo).HasColumnName("Titulo").IsRequired(true);
             builder.Property(livro => livro.Autor).HasColumnName("Autor").IsRequired(true);
-            builder.Property(livro => livro.GeneroLiterario).HasColumnName("GeneroLiterario").IsRequired(true);
+            builder.Property(livro => livro.GeneroLiterario).HasColumnName("GeneroLiterario").IsRequired(false);
             builder.Property(livro => livro.QuantidadeDePaginas).HasColumnName("QuantidadeDePaginas").IsRequired(true);
             builder.Property(livro => livro.Sinopse).HasColumnName("Sinopse").IsRequired(true);
             builder.Property(livro => livro.ImagemCapa).HasColumnName("ImagemCapa").IsRequired(false);

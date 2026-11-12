@@ -45,8 +45,7 @@ builder.Services.AddScoped<ILivroBibliotecaAplicacao, LivroBibliotecaAplicacao>(
 builder.Services.AddScoped<ILoginAplicacao, LoginAplicacao>();
 builder.Services.AddScoped<IRecomendacaoIAAplicacao, RecomendacaoIAAplicacao>();
 
-builder.Services.AddScoped<IGroqService, GroqService>();
-builder.Services.AddScoped<IGoogleBooksService, GoogleBooksService>();
+builder.Services.AddHttpClient<IGroqService, GroqService>();
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ILivroRepositorio, LivroRepositorio>();

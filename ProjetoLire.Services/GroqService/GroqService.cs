@@ -1,17 +1,30 @@
 using System.Text;
 using System.Text.Json;
 using ProjetoLire.Dominio.Enumeradores;
+using ProjetoLire.Services.Interfaces;
 
 namespace ProjetoLire.Services
 {
     public class GroqService : IGroqService
     {
         private readonly HttpClient _httpClient;
+
+        public GroqService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
         string url = "https://api.groq.com/openai/v1/chat/completions";
-        
+
         public async Task<string?> RecomendarLivrosAsync(DateOnly dataNascimento, Genero genero, int quantidadeLivrosLidos, List<GeneroLiterario> generosFavoritos, TimeOnly tempoDisponivel, int diasDisponiveis)
         {
-            int idade = DateTime.Today.Year - dataNascimento.Year;
+            var dataDeHoje = DateOnly.FromDateTime(DateTime.Today);
+
+            int idade = dataDeHoje.Year - dataNascimento.Year;
+
+            if (dataNascimento > dataDeHoje.AddYears(-idade))
+            {
+                idade--;
+            }
 
             var prompt = $""" 
                 'Você é um especialista em análise de perfis de leitura e recomendações literárias. 
@@ -26,17 +39,36 @@ namespace ProjetoLire.Services
                 Quantidade de dias disponíveis para leitura: {diasDisponiveis}
 
                 Ao analisar o perfil, considere:
-                1. Os gêneros literários favoritos do usuário.
-                2. A quantidade de livros que ele já leu, considerando seu nível de familiaridade com a leitura.
-                3. O tempo diário e a quantidade de dias disponíveis para ler.
-                4. Sua idade e genero
-                5. A diversidade de autores, estilos e literaturas brasileiras e internacionais.
 
-                Priorize livros que tenham maior possibilidade de agradar ao usuário, considerando suas preferências e sua realidade de leitura.
+                1. A idade do usuário e a adequação temática das obras.
+                2. Seus gêneros literários favoritos e seus interesses.
+                3. Sua experiência com a leitura, considerando a quantidade
+                de livros que já leu.
+                4. Seu tempo disponível e sua rotina de leitura.
+                5. A diversidade de autores, estilos e literaturas brasileiras
+                e internacionais.
 
-                Não escolha livros apenas por sua popularidade. Procure identificar obras que realmente combinem com o perfil apresentado.
+                Critérios para as recomendações:
 
-                Se tiver acesso à pesquisa na internet, utilize informações confiáveis para conhecer melhor as obras e verificar sua relevância. Não invente títulos, autores ou informações bibliográficas.
+                - Priorize livros que realmente combinem com o perfil do leitor.
+                - Não se limite aos títulos mais tradicionais ou populares.
+                - Explore obras menos conhecidas, autores contemporâneos,
+                narrativas diferentes e livros que possam proporcionar
+                novas experiências de leitura.
+                - Considere obras brasileiras e internacionais.
+                - Busque diversidade entre as três recomendações, evitando
+                livros muito semelhantes.
+                - Não escolha livros apenas por sua popularidade.
+                - Não invente títulos ou autores.
+                - Priorize obras reais, com informações bibliográficas
+                consistentes.
+                - Retorne livros somente em português e livros que tenham edição em português
+                - Antes de trazer a resposta, valide se os títulos gerados são realmente de livros do contrário refaça a análise.
+
+                O objetivo é proporcionar recomendações personalizadas,
+                capazes de ampliar o repertório literário
+                do usuário, respeitando seus gostos e sua realidade de leitura.
+
 
                 Retorne exclusivamente um JSON válido, contendo somente três recomendações.
 
@@ -45,7 +77,7 @@ namespace ProjetoLire.Services
                 Não inclua explicações, comentários, introduções, formatação Markdown ou qualquer texto fora do JSON.
                 """;
 
-            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer");
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer");
 
             var payload = new
             {
@@ -60,7 +92,7 @@ namespace ProjetoLire.Services
 
             var conteudo = new StringContent(json, Encoding.UTF8, "application/json");
 
-            
+
             HttpResponseMessage resposta = await _httpClient.PostAsync(url, conteudo);
 
             string resultado = await resposta.Content.ReadAsStringAsync();

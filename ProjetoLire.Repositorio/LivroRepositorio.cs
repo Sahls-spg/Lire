@@ -36,6 +36,11 @@ namespace ProjetoLire.Repositorio
             return _contexto.Livros.Where(livro => livro.Id == livroId).FirstOrDefault();
         }
 
+        public Livro ObterPeloTituloEAutor(string titulo, string autor)
+        {
+            return _contexto.Livros.Where(livro => livro.Titulo == titulo && livro.Autor == autor).FirstOrDefault();
+        }
+
         public List<Livro> Listar()
         {
             return _contexto.Livros.ToList();

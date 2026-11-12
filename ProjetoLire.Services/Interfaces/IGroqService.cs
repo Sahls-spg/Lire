@@ -1,7 +1,7 @@
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Dominio.Enumeradores;
 
-namespace ProjetoLire.Services
+namespace ProjetoLire.Services.Interfaces
 {
     public interface IGroqService
     {

@@ -92,6 +92,7 @@ namespace ProjetoLire.API.Controllers
             }
         }
 
+        /*
         [HttpGet]
         [Route("BuscarLivrosGoogle")]
         public async Task<IActionResult> BuscarLivrosGoogle([FromQuery] string titulo, string autor)
@@ -106,5 +107,6 @@ namespace ProjetoLire.API.Controllers
                 return BadRequest(excecao.Message);
             }
         }
+        */
     }
 }
