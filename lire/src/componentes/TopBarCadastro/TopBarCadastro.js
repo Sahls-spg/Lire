@@ -1,5 +1,5 @@
 import style from "./TopBarCadastro.module.css";
-import Logo from "../../assets/Logo L.png"
+import Logo from "../../assets/img/Logo L.png"
 
 export function TopBarCadastro({ children }) {
     return (

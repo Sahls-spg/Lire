@@ -6,6 +6,7 @@ import { FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useEffect } from "react";
 import UsuarioAPI from "../../services/usuarioAPI";
+import { useAlert } from '../../componentes/Alert/AlertContext';
 
 export function Cadastro() {
     const [nome, setNome] = useState("");
@@ -14,20 +15,34 @@ export function Cadastro() {
     const [senha, setSenha] = useState("");
     const [verSenha, setVerSenha] = useState('password');
     const [quantidadeLivrosLidos, setQuantidadeLivrosLidos] = useState("");
+    const [diasDisponiveis, setDiasDisponiveis] = useState("");
     const [dataNascimento, setDataNascimento] = useState("");
+    const [tempoDiario, setTempoDiario] = useState("");
     const [genero, setGenero] = useState([]);
     const [generosLiterarios, setGenerosLiterarios] = useState([]);
     const [generosLiterariosSelecionado, setGenerosLiterariosSelecionado] = useState([]);
     const [generoSelecionado, setGeneroSelecionado] = useState("");
 
     const navigate = useNavigate();
+    const { mostrarAlerta } = useAlert();
 
     const validarEmail = () => {
         return email.length >= 10
     };
 
     const validarSenha = () => {
-        return senha.length >= 6
+        if(senha.length > 15)
+        {
+            return mostrarAlerta("A senha deve conter no máximo 12 caracteres.", 'warning')
+        }
+        else if(senha.length < 6)
+        {
+            return mostrarAlerta("A senha cadastrada deve conter no mínimo 6 caracteres!", 'warning')
+        }
+        else 
+        {
+            return senha;
+        }
     };
 
     useEffect(() => {
@@ -40,7 +55,7 @@ export function Cadastro() {
                 setGenerosLiterarios(generosLiterarios);
             }
             catch (error) {
-                alert("Não foi possível carregar os gêneros.");
+                mostrarAlerta("Não foi possível carregar os gêneros.");
             }
         }
 
@@ -68,20 +83,19 @@ export function Cadastro() {
         e.preventDefault();
 
         if (!validarEmail()) {
-            alert("Insira um e-mail válido!");
+            mostrarAlerta("Insira um e-mail válido!", 'warning');
             return;
         }
 
         if (!validarSenha()) {
-            alert("A senha cadastrada deve conter no mínimo 6 caracteres!");
             return;
         };
 
         try {
-            const response = await UsuarioAPI.criarAsync(nome, sobrenome, email, senha, quantidadeLivrosLidos, dataNascimento, generoSelecionado, generosLiterariosSelecionado);
+            const response = await UsuarioAPI.criarAsync(nome, sobrenome, email, senha, quantidadeLivrosLidos, dataNascimento, generoSelecionado, generosLiterariosSelecionado, diasDisponiveis, tempoDiario);
 
             if (response?.status === 200) {
-                alert("Usuário cadastrado com sucesso!")
+                mostrarAlerta("Usuário cadastrado com sucesso!", 'sucess')
                 navigate("/home");
             };
         }
@@ -89,10 +103,11 @@ export function Cadastro() {
             const mensagem = error.response?.data;
 
             if (mensagem != null) {
-                alert(mensagem);
+                mostrarAlerta(mensagem, 'danger');
             }
-            else {
-                alert("Ocorreu um erro ao fazer cadastro, tente novamente.");
+            else 
+            {
+                mostrarAlerta("Ocorreu um erro ao fazer cadastro, tente novamente.", 'danger');
             }
         }
     }
@@ -190,6 +205,29 @@ export function Cadastro() {
                                 />
                             </FormGroup>
                         </div>
+                        <div>
+                            <FormGroup controlId="formDiasDisponiveis" className="mb-3">
+                                <FormLabel>Dias disponíveis para ler durante a semana</FormLabel>
+                                <FormControl
+                                    type="number"
+                                    step="1"
+                                    value={diasDisponiveis}
+                                    onChange={(e) => setDiasDisponiveis(e.target.value)}
+                                    required
+                                />
+                            </FormGroup>
+                        </div>
+                        <FormGroup controlId="formTempoDiario" className="mb-3">
+                                <FormLabel>Tempo diário</FormLabel>
+                                <FormControl
+                                    type="timeOnly"
+                                    placeholder="Digite o tempo diário para ler"
+                                    name="tempoDiario"
+                                    value={tempoDiario}
+                                    onChange={(e) => setTempoDiario(e.target.value)}
+                                    required
+                                />
+                        </FormGroup>
                         <FormGroup controlId="formGenero" className="mb-3">
                             <FormLabel>Gênero</FormLabel>
                             <div className={style.botoes}>

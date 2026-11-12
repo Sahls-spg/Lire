@@ -1,5 +1,5 @@
 import style from "./TopBar.module.css";
-import Logo from "../../assets/Logo L.png";
+import Logo from "../../assets/img/Logo L.png";
 import { HiLogout } from "react-icons/hi";
 import { PiHouseBold } from "react-icons/pi";
 import { IoLibraryOutline } from "react-icons/io5";

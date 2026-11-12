@@ -1,7 +1,7 @@
 import { HTTPClient } from "./client";
 
 const UsuarioAPI = {
-    async criarAsync(nome, sobrenome, email, senha, quantidadeLivrosLidos, dataNascimento, genero, generoLiterarioFavorito)
+    async criarAsync(nome, sobrenome, email, senha, quantidadeLivrosLidos, dataNascimento, genero, generoLiterarioFavorito, diasDisponiveis, tempoDiario)
     {
         try
         {
@@ -13,7 +13,9 @@ const UsuarioAPI = {
                 QuantidadeLivrosLidos: quantidadeLivrosLidos,
                 DataNascimento: dataNascimento,
                 Genero: genero,
-                GenerosLiterariosFavorito: generoLiterarioFavorito
+                GenerosLiterariosFavorito: generoLiterarioFavorito,
+                DiasDisponiveis: diasDisponiveis,
+                TempoDiario: tempoDiario
             };
             const response = await HTTPClient.post(`/Usuario/Criar`,usuarioCriar);
             return response;

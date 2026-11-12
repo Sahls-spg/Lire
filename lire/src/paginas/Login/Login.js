@@ -1,11 +1,12 @@
+import style from './Login.module.css'
 import { useState } from "react";
-import Logo from "../../assets/Logo.png"
+import Logo from "../../assets/img/Logo.png"
 import LoginAPI from "../../services/loginAPI";
 import { FormControl, FormGroup, FormLabel, Form } from "react-bootstrap";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import style from './Login.module.css'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import { useAlert } from '../../componentes/Alert/AlertContext';
 
 export function Login() {
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ export function Login() {
     const [verSenha, setVerSenha] = useState('password');
 
     const navigate = useNavigate();
+    const { mostrarAlerta } = useAlert();
 
     const validarEmail = () => {
         return email.length >= 10
@@ -30,12 +32,12 @@ export function Login() {
         e.preventDefault();
 
         if (!validarEmail()) {
-            alert("Insira um e-mail válido!");
+            mostrarAlerta("Insira um e-mail válido!", 'warning');
             return;
         }
 
         if (!validarSenha()) {
-            alert("A senha deve conter no mínimo 6 caracteres!");
+            mostrarAlerta("A senha deve conter no mínimo 6 caracteres!", 'warning');
             return;
         };
 
@@ -43,22 +45,24 @@ export function Login() {
             const response = await LoginAPI.loginAsync(email, senha);
 
             if (response?.status === 200) {
+                mostrarAlerta("Bem - vindo(a) ao Lire!", 'sucess');
                 localStorage.setItem("token", response.data.token);
                 navigate("/home");
             };
         }
         catch (error) {
-            if (error.response?.status === 400) {
-                alert("Usuário não encontrado, faça seu cadastro!");
-                setEmail("");
+            if (error.response?.status === 400) 
+            {
+                mostrarAlerta("Usuário não encontrado, faça seu cadastro!", 'danger');
+            }
+            else if (error.response?.status === 401) 
+            {
+                mostrarAlerta("Senha incorreta, porfavor digite sua senha novamente.", 'danger');
                 setSenha("");
             }
-            else if (error.response?.status === 401) {
-                alert("Senha incorreta, porfavor digite sua senha novamente.");
-                setSenha("");
-            }
-            else {
-                alert("Erro ao fazer login.");
+            else 
+            {
+                mostrarAlerta("Erro ao fazer login.", 'danger');
             }
         }
     }

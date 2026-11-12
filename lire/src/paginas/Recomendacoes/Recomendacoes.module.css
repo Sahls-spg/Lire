@@ -13,4 +13,9 @@
         text-align: left;
         color: #2e1603;
     }
+    & h4
+    {
+        text-align: left;
+        color: #2e1603;
+    }
 }
