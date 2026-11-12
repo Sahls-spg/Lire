@@ -7,7 +7,7 @@ namespace ProjetoLire.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+  
     public class LivroController : ControllerBase
     {
         private readonly ILivroAplicacao _livroAplicacao;
@@ -30,7 +30,7 @@ namespace ProjetoLire.API.Controllers
             {
                 return BadRequest(excecao.Message);
             }
-        }     
+        }
 
         [HttpPut]
         [Route("Atualizar")]
@@ -85,6 +85,21 @@ namespace ProjetoLire.API.Controllers
             {
                 var livrosDominio = await _livroAplicacao.ListarAsync();
                 return Ok(livrosDominio);
+            }
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("BuscarLivrosGoogle")]
+        public async Task<IActionResult> BuscarLivrosGoogle([FromQuery] string titulo, string autor)
+        {
+            try
+            {
+                var livros = await _livroAplicacao.BuscarLivrosGoogleAsync(titulo, autor);
+                return Ok(livros);
             }
             catch (Exception excecao)
             {
