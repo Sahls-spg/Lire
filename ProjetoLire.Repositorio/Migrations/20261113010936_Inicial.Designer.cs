@@ -12,7 +12,7 @@ using ProjetoLire.Repositorio.Contexto;
 namespace ProjetoLire.Repositorio.Migrations
 {
     [DbContext(typeof(ProjetoLireContexto))]
-    [Migration("20261112023409_Inicial")]
+    [Migration("20261113010936_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -73,7 +73,7 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Autor");
 
-                    b.Property<int>("GeneroLiterario")
+                    b.Property<int?>("GeneroLiterario")
                         .HasColumnType("int")
                         .HasColumnName("GeneroLiterario");
 

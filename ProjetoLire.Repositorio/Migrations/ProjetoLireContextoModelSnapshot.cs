@@ -70,7 +70,7 @@ namespace ProjetoLire.Repositorio.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Autor");
 
-                    b.Property<int>("GeneroLiterario")
+                    b.Property<int?>("GeneroLiterario")
                         .HasColumnType("int")
                         .HasColumnName("GeneroLiterario");
 

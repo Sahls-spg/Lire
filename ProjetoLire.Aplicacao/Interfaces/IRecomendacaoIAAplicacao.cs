@@ -1,7 +1,10 @@
+using ProjetoLire.Aplicacao.DTO;
+using ProjetoLire.Dominio.Entidades;
+
 namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface IRecomendacaoIAAplicacao
     {
-        public Task<string> GerarRecomendacoesAsync(int usuarioId);
+        public Task<List<Livro>> GerarRecomendacoesAsync(int usuarioId);
     }
 }

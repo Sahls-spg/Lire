@@ -19,7 +19,7 @@ namespace ProjetoLire.Repositorio.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Autor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GeneroLiterario = table.Column<int>(type: "int", nullable: false),
+                    GeneroLiterario = table.Column<int>(type: "int", nullable: true),
                     QuantidadeDePaginas = table.Column<int>(type: "int", nullable: false),
                     Sinopse = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagemCapa = table.Column<string>(type: "nvarchar(max)", nullable: true)
