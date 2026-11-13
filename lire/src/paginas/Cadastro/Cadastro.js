@@ -31,18 +31,17 @@ export function Cadastro() {
     };
 
     const validarSenha = () => {
-        if(senha.length > 15)
-        {
-            return mostrarAlerta("A senha deve conter no máximo 12 caracteres.", 'warning')
+        if (senha.length > 15) {
+            mostrarAlerta("A senha deve conter no máximo 15 caracteres.", "warning");
+            return false;
         }
-        else if(senha.length < 6)
-        {
-            return mostrarAlerta("A senha cadastrada deve conter no mínimo 6 caracteres!", 'warning')
+
+        if (senha.length < 6) {
+            mostrarAlerta("A senha cadastrada deve conter no mínimo 6 caracteres.", "warning");
+            return false;
         }
-        else 
-        {
-            return senha;
-        }
+
+        return true;
     };
 
     useEffect(() => {
@@ -99,16 +98,9 @@ export function Cadastro() {
                 navigate("/home");
             };
         }
-        catch (error) {
-            const mensagem = error.response?.data;
-
-            if (mensagem != null) {
-                mostrarAlerta(mensagem, 'danger');
-            }
-            else 
-            {
-                mostrarAlerta("Ocorreu um erro ao fazer cadastro, tente novamente.", 'danger');
-            }
+        catch (error) 
+        {
+            mostrarAlerta("Ocorreu um erro ao fazer cadastro, tente novamente.", 'danger');
         }
     }
 
@@ -131,8 +123,8 @@ export function Cadastro() {
                                     value={nome}
                                     onChange={(e) => setNome(e.target.value)}
                                     required
-                                    minLenght={1}
-                                    maxLenght={15}
+                                    minLength={1}
+                                    maxLength={15}
                                 />
                             </FormGroup>
                             <FormGroup controlId="formSobrenome" className="mb-3">
@@ -144,8 +136,8 @@ export function Cadastro() {
                                     value={sobrenome}
                                     onChange={(e) => setSobrenome(e.target.value)}
                                     required
-                                    minLenght={2}
-                                    maxLenght={50}
+                                    minLength={2}
+                                    maxLength={50}
                                 />
                             </FormGroup>
                         </div>
@@ -159,8 +151,8 @@ export function Cadastro() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    minLenght={10}
-                                    maxLenght={40}
+                                    minLength={10}
+                                    maxLength={40}
                                 />
                             </FormGroup>
                             <FormGroup controlId="formSenha" className="mb-3">
@@ -173,8 +165,8 @@ export function Cadastro() {
                                         value={senha}
                                         onChange={(e) => setSenha(e.target.value)}
                                         required
-                                        minLenght={6}
-                                        maxLenght={15}
+                                        minLength={6}
+                                        maxLength={15}
                                     />
                                     <button type={"button"} onClick={handleSenha} className={style.botao_verSenha}>
                                         {verSenha === 'password' ? <IoIosEyeOff /> : <IoIosEye />}
@@ -218,15 +210,14 @@ export function Cadastro() {
                             </FormGroup>
                         </div>
                         <FormGroup controlId="formTempoDiario" className="mb-3">
-                                <FormLabel>Tempo diário</FormLabel>
-                                <FormControl
-                                    type="timeOnly"
-                                    placeholder="Digite o tempo diário para ler"
-                                    name="tempoDiario"
-                                    value={tempoDiario}
-                                    onChange={(e) => setTempoDiario(e.target.value)}
-                                    required
-                                />
+                            <FormLabel>Tempo diário</FormLabel>
+                            <FormControl
+                                type="time"
+                                name="tempoDiario"
+                                value={tempoDiario}
+                                onChange={(e) => setTempoDiario(e.target.value)}
+                                required
+                            />
                         </FormGroup>
                         <FormGroup controlId="formGenero" className="mb-3">
                             <FormLabel>Gênero</FormLabel>
@@ -237,9 +228,7 @@ export function Cadastro() {
                                         type="button"
                                         onClick={() => setGeneroSelecionado(genero)}
                                         className={
-                                            generoSelecionado === genero
-                                                ? style.selecionado
-                                                : ""
+                                            generoSelecionado === genero ? style.selecionado : ""
                                         }
                                     >
                                         {genero}

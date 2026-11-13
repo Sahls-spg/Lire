@@ -1,4 +1,5 @@
-.pagina_cadastro {
+.pagina_cadastro 
+{
     box-sizing: border-box;
     min-height: 100vh;
     width: 100%;
@@ -10,7 +11,8 @@
     background-color: #e0cfbf;
 }
 
-.pagina_conteudo {
+.pagina_conteudo 
+{
     box-sizing: border-box;
     padding: 30px 40px;
     background-color: #d3c1b0;
@@ -23,12 +25,14 @@
     border-radius: 15px;
 }
 
-.pagina_cabecalho {
+.pagina_cabecalho 
+{
     text-align: center;
     margin-bottom: 20px;
 }
 
-.linha_formulario {
+.linha_formulario 
+{
     display: flex;
     gap: 15px;
 
@@ -37,11 +41,13 @@
     }
 }
 
-.grupo_formulario {
+.grupo_formulario 
+{
     flex: 1;
 }
 
-h2 {
+h2 
+{
     color: #2e1603;
     font-size: 25px;
     margin-bottom: 8px;
@@ -72,7 +78,8 @@ label
     text-align: left;
 }
 
-.pagina_conteudo form input {
+.pagina_conteudo form input 
+{
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -94,7 +101,8 @@ label
     cursor: pointer;
 }
 
-.campo_senha {
+.campo_senha 
+{
     position: relative;
 }
 
@@ -116,33 +124,36 @@ label
 .botoes {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-
-    & button {
-        padding: 9px;
-        border-radius: 20px;
-        color: #2e1603;
-        border: 1px solid #4b2b19;
-        border-radius: 70px;
-        cursor: pointer;
-    }
+    gap: 8px;
 }
 
-.botoes button:hover {
-    background-color: #e4d0bd;
+.pagina_conteudo .botoes button {
+    padding: 10px 15px;
+    background-color: #f8f0e8;
+    color: #2e1603;
+    border: 1px solid #4b2b19;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-.botoes button.selecionado {
+.pagina_conteudo .botoes button.selecionado {
     background-color: #4b2b19;
     color: white;
 }
 
-@media (max-width: 768px) {
-    .pagina_cadastro {
-        padding: 85px;
+@media (max-width: 768px) 
+{
+    .pagina_cadastro 
+    {
+        padding: 15px;
     }
 
-    .pagina_conteudo {
-        padding: 25px;
+    .pagina_conteudo 
+    {
+        padding: 20px;
+    }
+
+    .linha_formulario {
+        flex-direction: column;
     }
 }
