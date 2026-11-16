@@ -14,7 +14,7 @@ namespace ProjetoLire.Aplicacao
             _livroRepositorio = livroRepositorio;
         }
 
-        public async Task<int> CadastrarAsync(LivroCriar livro)
+        public async Task CadastrarAsync(LivroCriar livro)
         {
 
             if (livro == null)
@@ -34,14 +34,12 @@ namespace ProjetoLire.Aplicacao
                 ImagemCapa = livro.ImagemCapa
             };
 
-            var livroId = _livroRepositorio.Cadastrar(livroDominio);
-
-            return livroId;
+            await _livroRepositorio.Cadastrar(livroDominio);
         }
 
         public async Task AtualizarAsync(LivroAtualizar livro)
         {
-            var livroDominio = _livroRepositorio.ObterPeloId(livro.Id);
+            var livroDominio = await _livroRepositorio.ObterPeloId(livro.Id);
 
             if (livroDominio == null)
             {
@@ -56,24 +54,24 @@ namespace ProjetoLire.Aplicacao
             livroDominio.QuantidadeDePaginas = livro.QuantidadeDePaginas;
             livroDominio.GeneroLiterario = livro.GeneroLiterario;
 
-            _livroRepositorio.Atualizar(livroDominio);
+            await _livroRepositorio.Atualizar(livroDominio);
         }
 
         public async Task DeletarAsync(int livroId)
         {
-            var livroDeletar = _livroRepositorio.ObterPeloId(livroId);
+            var livroDeletar = await _livroRepositorio.ObterPeloId(livroId);
 
             if (livroDeletar == null)
             {
                 throw new Exception("Livro não encontrado.");
             }
 
-            _livroRepositorio.Deletar(livroDeletar);
+            await _livroRepositorio.Deletar(livroDeletar);
         }
 
         public async Task<LivroResposta> ObterPeloIdAsync(int livroId)
         {
-            var livroDominio = _livroRepositorio.ObterPeloId(livroId);
+            var livroDominio = await _livroRepositorio.ObterPeloId(livroId);
 
             if (livroDominio == null)
             {

@@ -22,8 +22,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var usuarioId = await _usuarioAplicacao.CriarAsync(usuario);
-                return Ok(usuarioId);
+                await _usuarioAplicacao.CriarAsync(usuario);
+                return Created();
             }
             catch (Exception excecao)
             {

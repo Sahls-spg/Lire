@@ -5,12 +5,12 @@ namespace ProjetoLire.Repositorio.Interfaces
 {
     public interface IUsuarioRepositorio
     {
-        public int Criar(Usuario usuario);
-        public void Atualizar(Usuario usuario);
-        public void Deletar(Usuario usuario);
-        public Usuario ObterPeloId(int usuarioId);
-        public Usuario ObterPeloEmail(string email);
-        public List<Usuario> Listar();
+        public Task Criar(Usuario usuario);
+        public Task Atualizar(Usuario usuario);
+        public Task Deletar(Usuario usuario);
+        public Task<Usuario> ObterPeloId(int usuarioId);
+        public Task<Usuario> ObterPeloEmail(string email);
+        public Task<List<Usuario>> Listar();
         public List<Genero> ListarGeneros();
         public List<GeneroLiterario> ListarGenerosLiterarios();
     }

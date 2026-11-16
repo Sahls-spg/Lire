@@ -23,8 +23,8 @@ namespace ProjetoLire.API.Controllers
         {
             try
             {
-                var livroId = await _livroAplicacao.CadastrarAsync(livro);
-                return Ok(livroId);
+                await _livroAplicacao.CadastrarAsync(livro);
+                return Created();
             }
             catch (Exception excecao)
             {

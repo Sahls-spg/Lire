@@ -6,7 +6,7 @@ namespace ProjetoLire.Aplicacao.Interfaces
 {
     public interface IUsuarioAplicacao
     {
-        public Task<int> CriarAsync(UsuarioCriar usuario);
+        public Task CriarAsync(UsuarioCriar usuario);
         public Task AtualizarAsync(UsuarioAtualizar usuario);
         public Task DeletarAsync(int usuarioId);
         public Task<UsuarioResposta> ObterPeloIdAsync(int usuarioId);

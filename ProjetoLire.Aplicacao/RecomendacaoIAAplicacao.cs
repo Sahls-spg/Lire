@@ -17,7 +17,7 @@ namespace ProjetoLire.Aplicacao
 
         public async Task<string> GerarRecomendacoesAsync(int usuarioId)
         {
-            var usuario = _usuarioRepositorio.ObterPeloId(usuarioId);
+            var usuario = await _usuarioRepositorio.ObterPeloId(usuarioId);
 
             if (usuario == null)
             {

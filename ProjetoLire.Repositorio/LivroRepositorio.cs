@@ -1,3 +1,6 @@
+using System.Data;
+using Dapper;
+using Microsoft.EntityFrameworkCore;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Repositorio.Contexto;
 using ProjetoLire.Repositorio.Interfaces;
@@ -11,34 +14,34 @@ namespace ProjetoLire.Repositorio
              
         }
 
-        public int Cadastrar(Livro livro)
+        public async Task Cadastrar(Livro livro)
         {
-            _contexto.Livros.Add(livro);
-            _contexto.SaveChanges();
-
-            return livro.Id;
+            var parametros = new { livro.Titulo, livro.Autor, livro.GeneroLiterario, livro.QuantidadeDePaginas, livro.Sinopse, livro.ImagemCapa };
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spCadastrarLivros", parametros,commandType:CommandType.StoredProcedure);
         }
 
-        public void Atualizar(Livro livro)
+        public async Task Atualizar(Livro livro)
         {
-            _contexto.Livros.Update(livro);
-            _contexto.SaveChanges();
+            var parametros = new { livro.Id, livro.Titulo, livro.Autor, livro.GeneroLiterario, livro.QuantidadeDePaginas, livro.Sinopse };
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spAtualizarLivros", parametros,commandType:CommandType.StoredProcedure);
         }
 
-        public void Deletar(Livro livro)
+        public async Task Deletar(Livro livro)
         {
-            _contexto.Livros.Remove(livro);
-            _contexto.SaveChanges();
+            var parametros = new { Id = livro.Id};
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spDeletarLivros", parametros,commandType:CommandType.StoredProcedure);
         }
 
-        public Livro ObterPeloId(int livroId)
+        public async Task<Livro> ObterPeloId(int livroId)
         {
-            return _contexto.Livros.Where(livro => livro.Id == livroId).FirstOrDefault();
+            var parametros = new { LivroId = livroId};
+            return await _contexto.Database.GetDbConnection().QueryFirstOrDefaultAsync<Livro>("spObterLivroPorID", parametros,commandType:CommandType.StoredProcedure);
         }
 
-        public List<Livro> Listar()
+        public async Task<List<Livro>> Listar()
         {
-            return _contexto.Livros.ToList();
+            var livros = await _contexto.Database.GetDbConnection().QueryAsync<Livro>("SELECT * FROM vwListarLivros");
+            return livros.ToList();
         }
     }
 }

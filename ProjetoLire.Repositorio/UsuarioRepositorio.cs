@@ -1,3 +1,7 @@
+using System.Data;
+using System.Text.Json;
+using Dapper;
+using Microsoft.EntityFrameworkCore;
 using ProjetoLire.Dominio.Entidades;
 using ProjetoLire.Dominio.Enumeradores;
 using ProjetoLire.Repositorio.Contexto;
@@ -11,38 +15,74 @@ namespace ProjetoLire.Repositorio
         {
 
         }
-        
-        public int Criar(Usuario usuario)
-        {
-            _contexto.Usuarios.Add(usuario);
-            _contexto.SaveChanges();
 
-            return usuario.Id;
+        public async Task Criar(Usuario usuario)
+        {
+            var parametros = new { usuario.Nome, usuario.Sobrenome, usuario.DataNascimento, usuario.Genero, usuario.Email, usuario.Senha, QuantidadeLivrosLidos = usuario.QuantidadeDeLivrosLidos, usuario.DiasDisponiveisParaLer, TempoDiario = usuario.TempoDiarioPraLer, DataCriacaoConta = usuario.DataCriacaoDaConta, GenerosLiterariosFavorito = System.Text.Json.JsonSerializer.Serialize(usuario.GenerosLiterariosFavorito) };
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spCadastrarUsuario", parametros, commandType: CommandType.StoredProcedure);
         }
 
-        public void Atualizar(Usuario usuario)
+        public async Task Atualizar(Usuario usuario)
         {
-            _contexto.Usuarios.Update(usuario);
-            _contexto.SaveChanges();
+            var parametros = new { UsuarioID = usuario.Id, NovoNome = usuario.Nome, NovoSobrenome = usuario.Sobrenome, NovoEmail = usuario.Email, NovaDataNascimento = usuario.DataNascimento };
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spAtualizarUsuario", parametros, commandType: CommandType.StoredProcedure);
         }
 
-        public void Deletar(Usuario usuario)
+        public async Task Deletar(Usuario usuario)
         {
-            _contexto.Usuarios.Remove(usuario);
-            _contexto.SaveChanges();
+            var parametros = new { UsuarioID = usuario.Id };
+            await _contexto.Database.GetDbConnection().ExecuteAsync("spDeletarUsuario", parametros, commandType: CommandType.StoredProcedure);
         }
 
-        public Usuario ObterPeloId(int usuarioId)
+        public async Task<Usuario> ObterPeloId(int usuarioId)
         {
-            return _contexto.Usuarios.Where(usuario => usuario.Id == usuarioId).FirstOrDefault();
+            var parametros = new { UsuarioID = usuarioId };
+
+            var usuarioBanco = await _contexto.Database.GetDbConnection().QueryFirstOrDefaultAsync("spObterUsuarioPorID", parametros, commandType: CommandType.StoredProcedure);
+
+            if (usuarioBanco == null)
+            {
+                return null;
+            }
+
+            var usuario = new Usuario
+            {
+                Id = usuarioBanco.Id,
+                Nome = usuarioBanco.Nome,
+                Sobrenome = usuarioBanco.Sobrenome,
+                Genero = (Genero)usuarioBanco.Genero,
+                Email = usuarioBanco.Email,
+                Senha = usuarioBanco.Senha,
+                QuantidadeDeLivrosLidos = usuarioBanco.QuantidadeDeLivrosLidos,
+                DiasDisponiveisParaLer = usuarioBanco.DiasDisponiveisParaLer,
+                TempoDiarioPraLer = TimeOnly.FromTimeSpan(usuarioBanco.TempoDiarioPraLer),
+                DataNascimento = DateOnly.FromDateTime(usuarioBanco.DataNascimento),
+                DataCriacaoDaConta = DateOnly.FromDateTime(usuarioBanco.DataCriacaoDaConta),
+                GenerosLiterariosFavorito = JsonSerializer.Deserialize<List<GeneroLiterario>>((string)usuarioBanco.GenerosLiterariosFavorito ?? "[]")
+            };
+
+            return usuario;
         }
-        public Usuario ObterPeloEmail(string email)
+
+        public async Task<Usuario> ObterPeloEmail(string email)
         {
-            return _contexto.Usuarios.Where(usuario => usuario.Email == email).FirstOrDefault();
+            var parametros = new { Email = email };
+            return await _contexto.Database.GetDbConnection().QueryFirstOrDefaultAsync<Usuario>("spObterUsuarioPeloEmail", parametros, commandType: CommandType.StoredProcedure);
         }
-        public List<Usuario> Listar()
+        public async Task<List<Usuario>> Listar()
         {
-            return _contexto.Usuarios.ToList();
+            var usuariosBanco = await _contexto.Database.GetDbConnection().QueryAsync("SELECT * FROM vwListarUsuarios");
+
+            var usuarios = new List<Usuario>();
+
+            foreach (var usuario in usuariosBanco)
+            {
+                var usuarioDominio = await ObterPeloId((int)usuario.Id);
+
+                usuarios.Add(usuarioDominio);
+            }
+
+            return usuarios;
         }
 
         public List<Genero> ListarGeneros()

@@ -15,7 +15,7 @@ namespace ProjetoLire.Aplicacao
             _usuarioRepositorio = usuarioRepositorio;
         }
 
-        public async Task<int> CriarAsync(UsuarioCriar usuario)
+        public async Task CriarAsync(UsuarioCriar usuario)
         {
             if (usuario == null)
             {
@@ -49,14 +49,12 @@ namespace ProjetoLire.Aplicacao
                 DataNascimento = usuario.DataNascimento
             };
 
-            var usuarioId = _usuarioRepositorio.Criar(usuarioDominio);
-
-            return usuarioId;
+            await _usuarioRepositorio.Criar(usuarioDominio);
         }
 
         public async Task AtualizarAsync(UsuarioAtualizar usuario)
         {
-            var usuarioDominio = _usuarioRepositorio.ObterPeloId(usuario.Id);
+            var usuarioDominio = await _usuarioRepositorio.ObterPeloId(usuario.Id);
 
             if (usuarioDominio == null)
             {
@@ -71,25 +69,25 @@ namespace ProjetoLire.Aplicacao
             usuarioDominio.Email = usuario.Email;
             usuarioDominio.DataNascimento = usuario.DataNascimento;
 
-            _usuarioRepositorio.Atualizar(usuarioDominio);
+            await _usuarioRepositorio.Atualizar(usuarioDominio);
         }
 
         public async Task DeletarAsync(int usuarioId)
         {
 
-            var usuarioDeletar = _usuarioRepositorio.ObterPeloId(usuarioId);
+            var usuarioDeletar = await _usuarioRepositorio.ObterPeloId(usuarioId);
 
             if (usuarioDeletar == null)
             {
                 throw new Exception("Usuário não encontrado.");
             }
 
-            _usuarioRepositorio.Deletar(usuarioDeletar);
+           await _usuarioRepositorio.Deletar(usuarioDeletar);
         }
 
         public async Task<UsuarioResposta> ObterPeloIdAsync(int usuarioId)
         {
-            var usuarioDominio = _usuarioRepositorio.ObterPeloId(usuarioId);
+            var usuarioDominio = await _usuarioRepositorio.ObterPeloId(usuarioId);
 
             if (usuarioDominio == null)
             {
@@ -116,7 +114,7 @@ namespace ProjetoLire.Aplicacao
 
         public async Task<Usuario> ObterPeloEmailAsync(string email)
         {
-            var usuarioDominio = _usuarioRepositorio.ObterPeloEmail(email);
+            var usuarioDominio = await _usuarioRepositorio.ObterPeloEmail(email);
 
             if (usuarioDominio == null)
             {

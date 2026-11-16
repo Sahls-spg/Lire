@@ -4,10 +4,10 @@ namespace ProjetoLire.Repositorio.Interfaces
 {
     public interface ILivroRepositorio
     {
-        public int Cadastrar(Livro livro);
-        public void Atualizar(Livro livro);
-        public void Deletar(Livro livro);
-        public Livro ObterPeloId(int livroId);
-        public List<Livro> Listar();
+        public Task Cadastrar(Livro livro);
+        public Task Atualizar(Livro livro);
+        public Task Deletar(Livro livro);
+        public Task<Livro> ObterPeloId(int livroId);
+        public Task<List<Livro>> Listar();
     }
 }
