@@ -71,18 +71,8 @@ namespace ProjetoLire.Repositorio
         }
         public async Task<List<Usuario>> Listar()
         {
-            var usuariosBanco = await _contexto.Database.GetDbConnection().QueryAsync("SELECT * FROM vwListarUsuarios");
-
-            var usuarios = new List<Usuario>();
-
-            foreach (var usuario in usuariosBanco)
-            {
-                var usuarioDominio = await ObterPeloId((int)usuario.Id);
-
-                usuarios.Add(usuarioDominio);
-            }
-
-            return usuarios;
+            var usuariosBanco = await _contexto.Database.GetDbConnection().QueryAsync<Usuario>("SELECT * FROM vwListarUsuarios");
+            return usuariosBanco.ToList();
         }
 
         public List<Genero> ListarGeneros()

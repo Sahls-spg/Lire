@@ -9,6 +9,6 @@ namespace ProjetoLire.Aplicacao.Interfaces
         public Task AtualizarAsync(LivroAtualizar livro);
         public Task DeletarAsync(int livroId);
         public Task<LivroResposta> ObterPeloIdAsync(int livroId);
-        public Task<List<LivroResposta>> ListarAsync();
+        public Task<List<Livro>> ListarAsync();
     }
 }

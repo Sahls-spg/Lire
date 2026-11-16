@@ -124,7 +124,7 @@ namespace ProjetoLire.Aplicacao
             return usuarioDominio;
         }
 
-        public async Task<List<UsuarioResposta>> ListarAsync()
+        public async Task<List<Usuario>> ListarAsync()
         {
             var listaUsuariosDominio = _usuarioRepositorio.Listar();
 
@@ -133,24 +133,7 @@ namespace ProjetoLire.Aplicacao
                 throw new Exception("Não há usuários para listar.");
             }
 
-            var listaUsuarios = listaUsuariosDominio
-                .Select(usuario => new UsuarioResposta()
-                {
-                    Id = usuario.Id,
-                    Nome = usuario.Nome,
-                    Sobrenome = usuario.Sobrenome,
-                    Genero = usuario.Genero,
-                    Email = usuario.Email,
-                    QuantidadeLivrosLidos = usuario.QuantidadeDeLivrosLidos,
-                    TempoDiarioPraLer = usuario.TempoDiarioPraLer,
-                    DiasDisponiveisParaLer = usuario.DiasDisponiveisParaLer,
-                    DataNascimento = usuario.DataNascimento,
-                    DataCriacaoDaConta = usuario.DataCriacaoDaConta,
-                    GenerosLiterariosFavorito = usuario.GenerosLiterariosFavorito
-                })
-                .ToList();
-
-            return listaUsuarios;
+            return await listaUsuariosDominio;
         }
 
         public async Task<List<Genero>> ListarGeneros()

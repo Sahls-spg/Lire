@@ -92,28 +92,10 @@ namespace ProjetoLire.Aplicacao
             return livro;
         }
 
-        public async Task<List<LivroResposta>> ListarAsync()
+        public async Task<List<Livro>> ListarAsync()
         {
             var livrosDominio = _livroRepositorio.Listar();
-
-            if (livrosDominio == null)
-            {
-                throw new Exception("Não há livros para listar.");
-            }
-
-            var listaLivros = livrosDominio.Select(livro => new LivroResposta
-            {
-                Id = livro.Id,
-                Titulo = livro.Titulo,
-                Autor = livro.Autor,
-                Sinopse = livro.Sinopse,
-                QuantidadeDePaginas = livro.QuantidadeDePaginas,
-                GeneroLiterario = livro.GeneroLiterario,
-                ImagemCapa = livro.ImagemCapa
-            }).ToList();
-
-
-            return listaLivros;
+            return await livrosDominio;
         }
 
         private static void ValidarInformacoesLivro(string titulo, string autor, int quantidadeDePaginas)
